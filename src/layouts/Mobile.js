@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Header from '../components/mobile/Header';
 
 const MobileWrapper = styled.section`
-    margin: 3rem;
+    margin: 2rem;
 `;
 
 const Mobile = () => {
