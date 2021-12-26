@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CityName from '../components/common/CityName';
 import Header from '../components/mobile/Header';
 
 const MobileWrapper = styled.section`
@@ -9,6 +10,7 @@ const Mobile = () => {
     return (
         <MobileWrapper>
             <Header />
+            <CityName />
         </MobileWrapper>
     );
 };

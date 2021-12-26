@@ -60,13 +60,17 @@ const Search = props => {
 
     useEffect(() => {
         const fetchData = async query => {
-            const response = await geoDBApi.get("/cities", {
-                params: {
-                    limit: 10,
-                    namePrefix: query
-                }
-            });
-            return response.data.data;
+            try {
+                const response = await geoDBApi.get("/cities", {
+                    params: {
+                        limit: 10,
+                        namePrefix: query
+                    }
+                });
+                return response.data.data;
+            } catch (err) {
+                console.log('An error has ocurred while fetching city data.', err);
+            }
         };
 
         const timer = setTimeout(async () => {

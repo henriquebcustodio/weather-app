@@ -10,7 +10,6 @@ const ListItem = styled.li`
 const SearchListItem = props => {
 
     const clickHandler = () => {
-        console.log('hello');
         props.onClick(props.data);
     };
 
