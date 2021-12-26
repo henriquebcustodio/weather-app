@@ -22,7 +22,7 @@ const SettingsWrapper = styled.a`
 const Settings = () => {
     return (
         <SettingsWrapper role="button">
-            <FiSettings size="1.3rem" />
+            <FiSettings size={"1.3rem"} />
         </SettingsWrapper>
     );
 };

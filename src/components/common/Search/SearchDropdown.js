@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { FiMapPin } from 'react-icons/fi';
 import SearchListItem from './SearchListItem';
+import CityContext from '../../../context/city-context';
 
 const DropdownList = styled.ul`
     position: absolute;
@@ -23,9 +25,17 @@ const CurrentLocationLi = styled.li`
     align-items: center;
     margin-bottom: 1rem;
     color: ${props => props.theme.blue};
+    cursor: pointer;
 `;
 
 const SearchDropdown = props => {
+    const cityCtx = useContext(CityContext);
+
+    const searchResultClickHandler = cityData => {
+        cityCtx.updateCity(cityData);
+        props.onResultSelected();
+    };
+
     return (
         <DropdownList>
             {props.results.length === 0 &&
@@ -39,6 +49,7 @@ const SearchDropdown = props => {
                     return <SearchListItem
                         data={result}
                         key={result.id}
+                        onClick={searchResultClickHandler}
                     />;
                 })}
         </DropdownList>

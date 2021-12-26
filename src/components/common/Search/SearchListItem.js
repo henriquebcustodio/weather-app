@@ -8,8 +8,14 @@ const ListItem = styled.li`
 `;
 
 const SearchListItem = props => {
+
+    const clickHandler = () => {
+        console.log('hello');
+        props.onClick(props.data);
+    };
+
     return (
-        <ListItem>
+        <ListItem onClick={clickHandler}>
             {`${props.data.city}, ${props.data.region}, ${props.data.country}`}
         </ListItem>
     );

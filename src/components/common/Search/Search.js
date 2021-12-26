@@ -103,13 +103,15 @@ const Search = props => {
         <SearchWrapper>
             <InputWrapper focused={isFocused} autocomplete="false">
                 {isFocused &&
-                    <Label>
-                        <FiArrowLeft size="1.3rem" />
+                    <Label
+                        onClick={blurHandler}
+                    >
+                        <FiArrowLeft size={"1.3rem"} />
                     </Label>
                 }
                 {!isFocused &&
                     <Label htmlFor="search">
-                        <FiSearch size="1.3rem" />
+                        <FiSearch size={"1.3rem"} />
                     </Label>
                 }
                 <Input
@@ -117,13 +119,12 @@ const Search = props => {
                     id="search"
                     type="search"
                     onFocus={focusHandler}
-                    onBlur={blurHandler}
                     autocomplete="off"
                     ref={inputRef}
                     onChange={queryChangeHandler}
                 />
             </InputWrapper>
-            {isFocused && <SearchDropdown results={searchResults} />}
+            {isFocused && <SearchDropdown results={searchResults} onResultSelected={blurHandler} />}
         </SearchWrapper>
     );
 };
