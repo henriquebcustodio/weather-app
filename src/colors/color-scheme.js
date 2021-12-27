@@ -1,5 +1,4 @@
 const colorScheme = {
-    // backgroundGray: '#F6F6F8',
     backgroundGray: '#EBEBF0',
     cardGray: '#AEAEAE',
     headerGray: '#C5C5C5',

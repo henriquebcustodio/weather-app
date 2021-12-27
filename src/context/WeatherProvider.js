@@ -16,6 +16,7 @@ const WeatherProvider = props => {
                         lat: city.latitude,
                         lon: city.longitude,
                         exclude: 'minutely',
+                        units: 'metric',
                         appid: weatherAPIKey
                     }
                 });

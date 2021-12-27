@@ -66,7 +66,8 @@ const Search = props => {
                 const response = await geoDBApi.get("/cities", {
                     params: {
                         limit: 10,
-                        namePrefix: query
+                        namePrefix: query,
+                        minPopulation: 20000,
                     },
                     signal: controller.signal
                 });
@@ -84,7 +85,7 @@ const Search = props => {
             } else {
                 setSearchResults([]);
             }
-        }, 350);
+        }, 400);
 
         return () => {
             clearTimeout(timer);

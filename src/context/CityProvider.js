@@ -45,7 +45,6 @@ const CityProvider = props => {
             setIsBusy(false);
         }, {
             enableHighAccuracy: true,
-            timeout: 10000,
         });
     }, []);
 

@@ -3,13 +3,15 @@ import WeatherContext from '../../context/weather-context';
 import styled from 'styled-components';
 import WeatherIcon from './WeatherIcon';
 import { toTitleCase } from '../../utils/string-utils';
+import Temperature from './CurrentTemperature';
+import CurrentDate from './CurrentDate';
 
 const CurrentWeatherWrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 2rem;
 `;
 
 const IconWrapper = styled.div`
@@ -17,13 +19,12 @@ const IconWrapper = styled.div`
     justify-content: center;
     width: 100%;
     height: 10rem;
-    margin-top: 2rem;
 `;
 
-const WeatherDescription = styled.h1`
+const WeatherDescription = styled.p`
     margin: 0;
-    margin-top: 2rem;
-    font-weight: 600;
+    margin-top: 1rem;
+    font-weight: 500;
 `;
 
 const CurrentWeather = () => {
@@ -39,6 +40,8 @@ const CurrentWeather = () => {
                 <WeatherIcon id={weatherId} isNight={isNight} />
             </IconWrapper>
             <WeatherDescription>{weatherDescription}</WeatherDescription>
+            <Temperature />
+            <CurrentDate />
         </CurrentWeatherWrapper>
     );
 };
