@@ -15,12 +15,12 @@ const CurrentTimeWrapper = styled.section`
     }
 
     span {
-        color: ${props => props.theme.cardGray}
+        color: ${props => props.theme.headerGray}
     }
 `;
 
 const CurrentTime = props => {
-    const { data: weatherData } = useContext(WeatherContext);
+    const { weatherData } = useContext(WeatherContext);
     const [currentDateTime, setCurrentDateTime] = useState();
 
     const { onUpdate } = props;

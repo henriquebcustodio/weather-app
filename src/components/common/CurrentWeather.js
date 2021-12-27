@@ -6,6 +6,7 @@ import { toTitleCase } from '../../utils/string-utils';
 import Temperature from './CurrentTemperature';
 import CurrentTime from './CurrentTime';
 import { dateTimeIsNight } from '../../utils/date-utils';
+import SecondaryDetails from './SecondaryDetails.js/ScondaryDetails';
 
 const CurrentWeatherWrapper = styled.section`
     display: flex;
@@ -29,7 +30,7 @@ const WeatherDescription = styled.p`
 `;
 
 const CurrentWeather = () => {
-    const { data: weatherData } = useContext(WeatherContext);
+    const { weatherData } = useContext(WeatherContext);
     const currentWeatherData = weatherData.current.weather[0];
     const weatherId = currentWeatherData.id;
     const weatherDescription = toTitleCase(currentWeatherData.description);
@@ -47,6 +48,7 @@ const CurrentWeather = () => {
             <WeatherDescription>{weatherDescription}</WeatherDescription>
             <Temperature />
             <CurrentTime onUpdate={isNightHandler} />
+            <SecondaryDetails />
         </CurrentWeatherWrapper>
     );
 };

@@ -8,7 +8,7 @@ import CityContext from '../context/city-context';
 
 
 const MobileWrapper = styled.section`
-    margin: 2rem;
+    margin: 2rem 1rem;
 `;
 
 const Mobile = () => {

@@ -5,7 +5,7 @@ import WeatherContext from "../../context/weather-context";
 const TemperatureWrapper = styled.section`
     display: flex;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 
     span {
         font-weight: 400;
@@ -14,7 +14,7 @@ const TemperatureWrapper = styled.section`
 `;
 
 const Temperature = () => {
-    const { data: weatherData } = useContext(WeatherContext);
+    const { weatherData } = useContext(WeatherContext);
     const currentTemperature = Math.round(weatherData.current.temp);
 
     return (

@@ -51,7 +51,7 @@ const WeatherProvider = props => {
     }, [city, cityCtxBusy]);
 
     const weatherContext = {
-        data: weatherData,
+        weatherData: weatherData,
         isBusy: isBusy,
     };
 
