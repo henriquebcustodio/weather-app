@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import WeatherContext from '../../context/weather-context';
-import CityContext from '../../context/city-context';
 import worldTimeAPI from '../../services/world-time-api';
-import { unixToDatetime, getShortTime } from '../../utils/date-utils';
+import { unixToDateTime, getShortTime } from '../../utils/date-utils';
 
-const CurrentDateWrapper = styled.section`
+const CurrentTimeWrapper = styled.section`
     display: flex;
     justify-content: center;
 
@@ -20,16 +19,17 @@ const CurrentDateWrapper = styled.section`
     }
 `;
 
-const CurrentDate = () => {
+const CurrentTime = props => {
     const { data: weatherData } = useContext(WeatherContext);
-    const { city } = useContext(CityContext);
     const [currentDateTime, setCurrentDateTime] = useState();
+
+    const { onUpdate } = props;
 
     useEffect(() => {
         const fetchData = async currentTimezone => {
             try {
                 const response = await worldTimeAPI.get(`/timezone/${currentTimezone}`);
-                return unixToDatetime(response.data.unixtime, currentTimezone);
+                return unixToDateTime(response.data.unixtime, currentTimezone);
             } catch (err) {
                 console.log('An error ocurred while fetching the current time.', err);
             }
@@ -38,6 +38,7 @@ const CurrentDate = () => {
         const updateDateTime = async () => {
             const dt = await fetchData(weatherData.timezone);
             setCurrentDateTime(dt);
+            onUpdate && onUpdate(dt);
         };
 
         updateDateTime();
@@ -49,18 +50,18 @@ const CurrentDate = () => {
         return () => {
             clearInterval(interval);
         };
-    }, [weatherData.timezone, city]);
+    }, [weatherData.timezone, onUpdate]);
 
     return (
-        <CurrentDateWrapper>
+        <CurrentTimeWrapper>
             {currentDateTime &&
                 <p>
                     {currentDateTime.weekdayLong},
                     <span> {getShortTime(currentDateTime)}</span>
                 </p>
             }
-        </CurrentDateWrapper>
+        </CurrentTimeWrapper>
     );
 };
 
-export default CurrentDate;
+export default CurrentTime;

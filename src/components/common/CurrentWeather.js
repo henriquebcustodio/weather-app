@@ -1,10 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState, useCallback } from 'react';
 import WeatherContext from '../../context/weather-context';
 import styled from 'styled-components';
 import WeatherIcon from './WeatherIcon';
 import { toTitleCase } from '../../utils/string-utils';
 import Temperature from './CurrentTemperature';
-import CurrentDate from './CurrentDate';
+import CurrentTime from './CurrentTime';
+import { dateTimeIsNight } from '../../utils/date-utils';
 
 const CurrentWeatherWrapper = styled.section`
     display: flex;
@@ -32,7 +33,11 @@ const CurrentWeather = () => {
     const currentWeatherData = weatherData.current.weather[0];
     const weatherId = currentWeatherData.id;
     const weatherDescription = toTitleCase(currentWeatherData.description);
-    const isNight = false;
+    const [isNight, setIsNight] = useState(false);
+
+    const isNightHandler = useCallback(dt => {
+        setIsNight(dateTimeIsNight(dt));
+    }, []);
 
     return (
         <CurrentWeatherWrapper>
@@ -41,7 +46,7 @@ const CurrentWeather = () => {
             </IconWrapper>
             <WeatherDescription>{weatherDescription}</WeatherDescription>
             <Temperature />
-            <CurrentDate />
+            <CurrentTime onUpdate={isNightHandler} />
         </CurrentWeatherWrapper>
     );
 };
