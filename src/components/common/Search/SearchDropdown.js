@@ -29,17 +29,22 @@ const CurrentLocationLi = styled.li`
 `;
 
 const SearchDropdown = props => {
-    const cityCtx = useContext(CityContext);
+    const { updateCity, getCurrentLocation } = useContext(CityContext);
 
     const searchResultClickHandler = cityData => {
-        cityCtx.updateCity(cityData);
+        updateCity(cityData);
+        props.onResultSelected();
+    };
+
+    const currentLocationClickHandler = () => {
+        getCurrentLocation();
         props.onResultSelected();
     };
 
     return (
         <DropdownList>
             {props.results.length === 0 &&
-                <CurrentLocationLi>
+                <CurrentLocationLi onClick={currentLocationClickHandler}>
                     <FiMapPin style={{ marginRight: '0.5rem' }} />
                     Use Current location
                 </CurrentLocationLi>

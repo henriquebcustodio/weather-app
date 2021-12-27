@@ -2,7 +2,9 @@ import React from 'react';
 
 const CityContext = React.createContext({
     city: {},
-    updateCityHandler: () => { }
+    updateCity: () => { },
+    getCurrentLocation: () => { },
+    isBusy: true
 });
 
 export default CityContext;

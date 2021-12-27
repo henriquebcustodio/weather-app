@@ -5,13 +5,11 @@ import weatherAPI, { weatherAPIKey } from '../services/weather-api';
 
 const WeatherProvider = props => {
     const [weatherData, setWeatherData] = useState({});
-    const [isBusy, setIsBusy] = useState(false);
-    const cityCtx = useContext(CityContext);
-    const { city } = cityCtx;
+    const [isBusy, setIsBusy] = useState(true);
+    const { city, isBusy: cityCtxBusy } = useContext(CityContext);
 
     useEffect(() => {
         const fetchData = async () => {
-            setIsBusy(true);
             try {
                 const response = await weatherAPI.get('onecall', {
                     params: {
@@ -27,11 +25,14 @@ const WeatherProvider = props => {
             }
             setIsBusy(false);
         };
-        fetchData();
-    }, [city]);
+        setIsBusy(true);
+        if (!cityCtxBusy) {
+            fetchData();
+        }
+    }, [city, cityCtxBusy]);
 
     const weatherContext = {
-        weatherData: weatherData,
+        data: weatherData,
         isBusy: isBusy,
     };
 

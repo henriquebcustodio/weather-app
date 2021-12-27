@@ -59,17 +59,21 @@ const Search = props => {
     };
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchData = async query => {
             try {
                 const response = await geoDBApi.get("/cities", {
                     params: {
                         limit: 10,
                         namePrefix: query
-                    }
+                    },
+                    signal: controller.signal
                 });
                 return response.data.data;
             } catch (err) {
                 console.log('An error has ocurred while fetching city data.', err);
+                return [];
             }
         };
 
@@ -80,10 +84,11 @@ const Search = props => {
             } else {
                 setSearchResults([]);
             }
-        }, 500);
+        }, 350);
 
         return () => {
             clearTimeout(timer);
+            controller.abort();
         };
     }, [query]);
 
