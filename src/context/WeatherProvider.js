@@ -20,16 +20,34 @@ const WeatherProvider = props => {
                         appid: weatherAPIKey
                     }
                 });
-                setWeatherData(response.data);
+                return response.data;
             } catch (err) {
                 console.log('An error has ocurred while fetching weather data.', err);
             }
+        };
+
+        const updateWeather = async () => {
+            setIsBusy(true);
+            const data = await fetchData();
+            setWeatherData(data);
             setIsBusy(false);
         };
-        setIsBusy(true);
+
+
         if (!cityCtxBusy) {
-            fetchData();
+            updateWeather();
         }
+
+        const interval = setInterval(() => {
+            if (!cityCtxBusy) {
+                updateWeather();
+            }
+        }, 60000 * 5);
+
+        return () => {
+            clearInterval(interval);
+        };
+
     }, [city, cityCtxBusy]);
 
     const weatherContext = {
