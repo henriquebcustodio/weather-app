@@ -1,10 +1,16 @@
+import styled from 'styled-components';
 import getWeatherIcon from "../../assets/WeatherIcons/WeatherIcons";
+
+const Icon = styled.img`
+    display: 'block';
+    height: 100%;
+`;
 
 const WeatherIcon = props => {
     const iconSrc = getWeatherIcon(props.id, props.isNight);
 
     return (
-        <img src={iconSrc.default} alt="Weather Condition" style={{ display: 'block' }} />
+        <Icon src={iconSrc.default} alt="Weather Condition" />
     );
 };
 

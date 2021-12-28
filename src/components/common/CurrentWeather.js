@@ -7,6 +7,7 @@ import Temperature from './CurrentTemperature';
 import CurrentTime from './CurrentTime';
 import { dateTimeIsNight } from '../../utils/date-utils';
 import SecondaryDetails from './SecondaryDetails/ScondaryDetails';
+import Forecast from '../mobile/Forecast/Forecast';
 
 const CurrentWeatherWrapper = styled.section`
     display: flex;
@@ -30,9 +31,10 @@ const WeatherDescription = styled.p`
 `;
 
 const Break = styled.hr`
-    width: 100%;
+    width: 90%;
     border: 0;
-    margin: 3rem 0rem;
+    margin: 0;
+    margin-top: 3rem;
     border: 1px solid ${props => props.theme.backgroundGray};
 `;
 
@@ -57,6 +59,7 @@ const CurrentWeather = () => {
             <CurrentTime onUpdate={isNightHandler} />
             <SecondaryDetails />
             <Break />
+            <Forecast />
         </CurrentWeatherWrapper>
     );
 };
