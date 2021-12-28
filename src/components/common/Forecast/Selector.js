@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const SelectorWrapper = styled.p`
-    color: ${props => props.theme.headerGray};
+    color: ${props => props.theme.gray};
     margin: 0rem 0.5rem;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     cursor: pointer;
 
     span {

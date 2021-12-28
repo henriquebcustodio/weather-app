@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components';
 
 const SecondaryDetailsWrapper = styled.section`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-top: 2.5rem;
     width: 100%;

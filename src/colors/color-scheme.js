@@ -1,7 +1,7 @@
 const colorScheme = {
     backgroundGray: '#EBEBF0',
-    cardGray: '#AEAEAE',
-    headerGray: '#C5C5C5',
+    backgroundGrayRGB: '235, 235, 240',
+    gray: '#C5C5C5',
     yellow: '#FFDE4A',
     orange: '#FFBF5E',
     blue: '#4050D2'

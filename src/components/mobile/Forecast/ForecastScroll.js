@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     width: 100%;
 `;
 
@@ -28,7 +28,7 @@ const ForecastScroll = props => {
                 <ScrollMenu>
                     {props.isWeekly &&
                         props.data.map(day => {
-                            const dt = unixToDateTime(day.dt);
+                            const dt = unixToDateTime(day.dt, props.timezone);
                             return (
                                 <WeekForecastItem
                                     weekDayShort={dt.weekdayShort}
@@ -42,7 +42,7 @@ const ForecastScroll = props => {
                         })}
                     {!props.isWeekly &&
                         props.data.map(hour => {
-                            const dt = unixToDateTime(hour.dt);
+                            const dt = unixToDateTime(hour.dt, props.timezone);
                             return (
                                 <DayForeCastItem
                                     time={getShortTime(dt)}

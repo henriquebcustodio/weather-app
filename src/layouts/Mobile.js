@@ -6,10 +6,23 @@ import Forecast from '../components/mobile/Forecast/Forecast';
 import Header from '../components/mobile/Header';
 import WeatherContext from '../context/weather-context';
 import CityContext from '../context/city-context';
+import Highlights from '../components/mobile/Highlights';
 
 
 const MobileWrapper = styled.main`
-    margin: 2rem 1rem;
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Break = styled.hr`
+    width: 90%;
+    border: 0;
+    margin: 0;
+    margin-top: 1.5rem;
+    border: 1px solid ${props => props.theme.backgroundGray};
+    opacity: 0.5;
 `;
 
 const Mobile = () => {
@@ -23,7 +36,10 @@ const Mobile = () => {
                 <Fragment>
                     <CityName />
                     <CurrentWeather />
+                    <Break />
                     <Forecast />
+                    <Break />
+                    <Highlights />
                 </Fragment>
             }
             {(weatherCtxBusy || cityCtxBusy) && <p>Loading...</p>}

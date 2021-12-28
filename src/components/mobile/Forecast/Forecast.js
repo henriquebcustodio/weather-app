@@ -30,7 +30,13 @@ const Forecast = () => {
     return (
         <ForecastWrapper>
             <ForecastSpan onChange={forecastSpanChangeHandler} />
-            {forecastData && <ForecastScroll data={forecastData} isWeekly={isWeekly} />}
+            {forecastData &&
+                <ForecastScroll
+                    data={forecastData}
+                    timezone={weatherData.timezone}
+                    isWeekly={isWeekly}
+                />
+            }
         </ForecastWrapper>
     );
 };

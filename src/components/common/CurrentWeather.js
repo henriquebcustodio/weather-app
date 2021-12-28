@@ -29,14 +29,6 @@ const WeatherDescription = styled.p`
     font-weight: 500;
 `;
 
-const Break = styled.hr`
-    width: 90%;
-    border: 0;
-    margin: 0;
-    margin-top: 3rem;
-    border: 1px solid ${props => props.theme.backgroundGray};
-`;
-
 const CurrentWeather = () => {
     const { weatherData } = useContext(WeatherContext);
     const currentWeatherData = weatherData.current.weather[0];
@@ -57,7 +49,6 @@ const CurrentWeather = () => {
             <Temperature />
             <CurrentTime onUpdate={isNightHandler} />
             <SecondaryDetails />
-            <Break />
         </CurrentWeatherWrapper>
     );
 };

@@ -30,7 +30,7 @@ const TemperatureWrapper = styled.div`
     span {
         margin: 0 4px;
         :nth-of-type(2) {
-            color: ${props => props.theme.headerGray};
+            color: ${props => props.theme.gray};
         }
     }
 `;
