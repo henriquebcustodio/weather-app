@@ -1,7 +1,16 @@
-import { useState, useContext, useCallback, Fragment } from 'react';
+import { useState, useContext, useCallback } from 'react';
+import styled from 'styled-components';
 import WeatherContext from '../../../context/weather-context';
 import ForecastSpan from "../../common/Forecast/ForecastSpan";
 import ForecastScroll from './ForecastScroll';
+
+const ForecastWrapper = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`;
 
 const Forecast = () => {
     const { weatherData } = useContext(WeatherContext);
@@ -19,10 +28,10 @@ const Forecast = () => {
     }, [weatherData]);
 
     return (
-        <Fragment>
+        <ForecastWrapper>
             <ForecastSpan onChange={forecastSpanChangeHandler} />
             {forecastData && <ForecastScroll data={forecastData} isWeekly={isWeekly} />}
-        </Fragment>
+        </ForecastWrapper>
     );
 };
 

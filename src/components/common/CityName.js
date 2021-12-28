@@ -16,9 +16,10 @@ const NameWrapper = styled.section`
         font-size: 1.6rem;
     }
 
-    h3 {
+    h2 {
         margin: 0;
         font-weight: 500;
+        font-size: 1rem;
         margin-top: 0.5rem;
     }
 `;
@@ -31,7 +32,7 @@ const CityName = () => {
     return (
         <NameWrapper>
             <h1>{cityName}</h1>
-            <h3>{cityRegion}</h3>
+            <h2>{cityRegion}</h2>
         </NameWrapper>
     );
 };

@@ -7,7 +7,6 @@ import Temperature from './CurrentTemperature';
 import CurrentTime from './CurrentTime';
 import { dateTimeIsNight } from '../../utils/date-utils';
 import SecondaryDetails from './SecondaryDetails/ScondaryDetails';
-import Forecast from '../mobile/Forecast/Forecast';
 
 const CurrentWeatherWrapper = styled.section`
     display: flex;
@@ -59,7 +58,6 @@ const CurrentWeather = () => {
             <CurrentTime onUpdate={isNightHandler} />
             <SecondaryDetails />
             <Break />
-            <Forecast />
         </CurrentWeatherWrapper>
     );
 };
