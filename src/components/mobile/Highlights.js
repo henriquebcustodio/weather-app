@@ -4,6 +4,8 @@ import HighlightCard from '../common/Highlights/HighlightCard';
 import UVIndex from '../common/Highlights/UVIndex';
 import WeatherContext from '../../context/weather-context';
 import WindStatus from '../common/Highlights/WindStatus/WindStatus';
+import SunriseAndSunset from '../common/Highlights/SunriseAndSunset';
+import { unixToDateTime, getShortTime } from '../../utils/date-utils';
 
 const HighlightsWrapper = styled.section`
     display: flex;
@@ -34,6 +36,8 @@ const Highlights = () => {
     const uvi = Math.round(weatherData.current.uvi);
     const windSpeed = weatherData.current.wind_speed;
     const windDirection = weatherData.current.wind_deg;
+    const sunrise = getShortTime(unixToDateTime(weatherData.current.sunrise));
+    const sunset = getShortTime(unixToDateTime(weatherData.current.sunset));
 
     return (
         <HighlightsWrapper>
@@ -54,6 +58,15 @@ const Highlights = () => {
                     <WindStatus
                         windSpeed={windSpeed}
                         windAngle={windDirection}
+                    />
+                </HighlightCard>
+                <HighlightCard
+                    title="Sunrise & Sunset"
+                    withBorder={true}
+                >
+                    <SunriseAndSunset
+                        sunrise={sunrise}
+                        sunset={sunset}
                     />
                 </HighlightCard>
             </HighlightsGrid>
