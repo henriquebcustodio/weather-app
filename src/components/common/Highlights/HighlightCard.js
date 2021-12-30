@@ -3,10 +3,12 @@ import styled from 'styled-components';
 const HighlightCardWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    height: 15rem;
     width: 100%;
     box-sizing: border-box;
     border-radius: 1rem;
     padding: 1rem;
+    overflow: hidden;
     ${props => {
         return props.withBorder ? `
             border: 2px solid rgba(${props.theme.backgroundGrayRGB}, 0.5);

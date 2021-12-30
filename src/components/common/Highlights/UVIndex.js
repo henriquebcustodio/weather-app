@@ -10,8 +10,8 @@ const ProgressSVG = props => {
                 {`.current-uvi {
                     font-family: inherit;
                     fill: black;
-                    font-size: 4.5rem;
-                    font-weight: semi-bold;
+                    font-size: 4rem;
+                    font-weight: 400;
                 }`}
             </style>
             <path strokeWidth="16" fillOpacity="1" stroke="#EBEBF0" d="M 11 143 A 104 104 0 1 1 235 143" />
@@ -32,6 +32,7 @@ const UVIndexWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
     width: 100%;
 `;
 
