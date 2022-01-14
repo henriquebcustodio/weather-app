@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const HighlightCardWrapper = styled.div`
+const HighlightCardWrapper = styled.section`
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 15rem;
     width: 100%;
     box-sizing: border-box;

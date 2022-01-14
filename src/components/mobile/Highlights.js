@@ -6,6 +6,7 @@ import WeatherContext from '../../context/weather-context';
 import WindStatus from '../common/Highlights/WindStatus/WindStatus';
 import SunriseAndSunset from '../common/Highlights/SunriseAndSunset';
 import { unixToDateTime, getShortTime } from '../../utils/date-utils';
+import Humidity from '../common/Highlights/Humidity';
 
 const HighlightsWrapper = styled.section`
     display: flex;
@@ -38,6 +39,7 @@ const Highlights = () => {
     const windDirection = weatherData.current.wind_deg;
     const sunrise = getShortTime(unixToDateTime(weatherData.current.sunrise));
     const sunset = getShortTime(unixToDateTime(weatherData.current.sunset));
+    const humidity = weatherData.current.humidity;
 
     return (
         <HighlightsWrapper>
@@ -69,8 +71,16 @@ const Highlights = () => {
                         sunset={sunset}
                     />
                 </HighlightCard>
-            </HighlightsGrid>
+                <HighlightCard
+                    title="Humidity"
+                    withBorder={true}
 
+                >
+                    <Humidity
+                        humidity={humidity}
+                    />
+                </HighlightCard>
+            </HighlightsGrid>
         </HighlightsWrapper>
     );
 };

@@ -4,15 +4,17 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 const SunriseAndSunsetWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin: 1rem 0;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
+    max-width: 12rem;
     height: 100%;
+`;
 
-    div {
-        display: flex;
-        align-items: center;
-    }
+const DataWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
 `;
 
 const IconWrapper = styled.div`
@@ -29,25 +31,27 @@ const IconWrapper = styled.div`
 
 const Time = styled.p`
     margin: 0;
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     font-size: 2.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const SunriseAndSunset = props => {
     return (
         <SunriseAndSunsetWrapper>
-            <div>
+            <DataWrapper>
                 <IconWrapper>
                     <FaArrowUp />
                 </IconWrapper>
                 <Time>{props.sunrise}</Time>
-            </div>
-            <div>
+            </DataWrapper>
+            <DataWrapper>
                 <IconWrapper>
                     <FaArrowDown />
                 </IconWrapper>
                 <Time>{props.sunset}</Time>
-            </div>
+            </DataWrapper>
 
         </SunriseAndSunsetWrapper>
     );
