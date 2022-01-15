@@ -1,3 +1,5 @@
+import { useRef, useEffect, useState } from 'react';
+import useOnScreen from '../../../../utils/hooks/useOnScreen';
 import styled from 'styled-components';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
@@ -24,13 +26,37 @@ const IconWrapper = styled.div`
     border: 2px solid ${props => props.theme.backgroundGray};
     color: ${props => props.theme.blue};
     transform-origin: center;
-    transform: rotate(${props => props.angle - 180}deg);
+    transform: rotate(180deg);
+
+    ${props => {
+        if (props.animate) return `
+            transition: 1s ease-out;
+            transform: rotate(${props.angle + 180}deg);
+        `;
+    }}
+    /* transform: rotate(${props => props.angle - 180}deg); */
 `;
 
 const WindDirection = props => {
+    const windIconRef = useRef();
+    const [animate, setAnimate] = useState(false);
+    const onScreen = useOnScreen(windIconRef);
+
+    useEffect(() => {
+        if (onScreen) {
+            setAnimate(true);
+        } else {
+            setAnimate(false);
+        }
+    }, [onScreen]);
+
     return (
         <WindDirectionWrapper>
-            <IconWrapper angle={props.angle}>
+            <IconWrapper
+                ref={windIconRef}
+                angle={props.angle}
+                animate={animate}
+            >
                 <FaMapMarkerAlt size="1.1rem" />
             </IconWrapper>
             <p>{props.angle}°</p>

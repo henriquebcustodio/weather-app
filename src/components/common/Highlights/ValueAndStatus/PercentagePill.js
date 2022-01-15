@@ -1,3 +1,5 @@
+import { useState, useRef, useEffect } from 'react';
+import useOnScreen from '../../../../utils/hooks/useOnScreen';
 import styled from 'styled-components';
 
 const Pill = styled.div`
@@ -16,10 +18,32 @@ const Ball = styled.div`
     height: 1.25rem;
     border-radius: 50%;
     background-color: ${props => props.theme.blue};
-    transform: ${props => `translateY(${props.yTranslation}rem)`};
+    transform: translateY(1.875rem);
+
+    ${props => {
+        if (props.animate) return `
+            transition: transform 1s ease-out;
+            transform: translateY(${props.yTranslation}rem)
+        `;
+    }}
+    /* transform: ${props => `translateY(${props.yTranslation}rem)`}; */
+    
 `;
 
 const PercentagePill = props => {
+    const ballRef = useRef();
+    const onScreen = useOnScreen(ballRef);
+    const [animate, setAnimate] = useState(false);
+
+    useEffect(() => {
+        console.log(onScreen);
+        if (onScreen) {
+            setAnimate(true);
+        } else {
+            setAnimate(false);
+        }
+    }, [onScreen]);
+
     const getBallYTranslation = percentage => {
         if (percentage > 1) percentage = 1;
         return -((percentage * 3.75) - 1.875);
@@ -27,7 +51,11 @@ const PercentagePill = props => {
 
     return (
         <Pill>
-            <Ball yTranslation={getBallYTranslation(props.percentage)} />
+            <Ball
+                ref={ballRef}
+                yTranslation={getBallYTranslation(props.percentage)}
+                animate={animate}
+            />
         </Pill>
     );
 };
