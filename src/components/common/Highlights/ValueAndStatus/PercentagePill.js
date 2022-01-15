@@ -36,7 +36,6 @@ const PercentagePill = props => {
     const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
-        console.log(onScreen);
         if (onScreen) {
             setAnimate(true);
         } else {

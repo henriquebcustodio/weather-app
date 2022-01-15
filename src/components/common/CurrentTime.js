@@ -26,6 +26,8 @@ const CurrentTime = props => {
     const { onUpdate } = props;
 
     useEffect(() => {
+        let isMounted = true;
+
         const fetchData = async currentTimezone => {
             try {
                 const response = await worldTimeAPI.get(`/timezone/${currentTimezone}`);
@@ -37,8 +39,8 @@ const CurrentTime = props => {
 
         const updateDateTime = async () => {
             const dt = await fetchData(weatherData.timezone);
-            setCurrentDateTime(dt);
-            onUpdate && onUpdate(dt);
+            isMounted && setCurrentDateTime(dt);
+            isMounted && onUpdate && onUpdate(dt);
         };
 
         updateDateTime();
@@ -48,6 +50,7 @@ const CurrentTime = props => {
         }, 15000);
 
         return () => {
+            isMounted = false;
             clearInterval(interval);
         };
     }, [weatherData.timezone, onUpdate]);
