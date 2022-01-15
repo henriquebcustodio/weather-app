@@ -21,7 +21,6 @@ const ValueWrapper = styled.div`
 `;
 
 const ValueAndStatus = props => {
-    console.log(props.pillPercentage);
     return (
         <ValueAndStatusWrapper>
             <ValueWrapper>

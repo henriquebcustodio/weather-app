@@ -12,7 +12,7 @@ const checkStatus = humidity => {
     if ((humidity >= 60 && humidity < 70) || (humidity >= 25 && humidity < 30)) {
         return {
             text: "Normal",
-            emojiSymbol: "🤙",
+            emojiSymbol: "🤙🏻",
             emojiLabel: "shaka-sign-emoji"
         };
     }

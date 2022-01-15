@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { FiSearch, FiArrowLeft } from 'react-icons/fi';
 import SearchDropdown from './SearchDropdown';
-import geoDBApi from '../../../services/geodb-cities';
+import geodbAPI from '../../../services/geodb-cities';
 
 const InputWrapper = styled.form`
     display: flex;
@@ -63,7 +63,7 @@ const Search = props => {
 
         const fetchData = async query => {
             try {
-                const response = await geoDBApi.get("/cities", {
+                const response = await geodbAPI.get("/cities", {
                     params: {
                         limit: 10,
                         namePrefix: query,

@@ -8,7 +8,7 @@ import SunriseAndSunset from '../common/Highlights/SunriseAndSunset';
 import { unixToDateTime, getShortTime } from '../../utils/date-utils';
 import Humidity from '../common/Highlights/Humidity';
 import Visibility from '../common/Highlights/Visibility';
-import AirPollution from '../common/Highlights/AirPollution';
+import AirQuality from '../common/Highlights/AirQuality';
 
 const HighlightsWrapper = styled.section`
     display: flex;
@@ -92,10 +92,10 @@ const Highlights = () => {
                     />
                 </HighlightCard>
                 <HighlightCard
-                    title="Air Pollution"
+                    title="Air Quality"
                     withBorder={true}
                 >
-                    <AirPollution
+                    <AirQuality
                         aqi={aqi}
                     />
                 </HighlightCard>

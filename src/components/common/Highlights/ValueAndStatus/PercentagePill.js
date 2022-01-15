@@ -21,9 +21,9 @@ const Ball = styled.div`
 
 const PercentagePill = props => {
     const getBallYTranslation = percentage => {
+        if (percentage > 1) percentage = 1;
         return -((percentage * 3.75) - 1.875);
     };
-    console.log(props.percentage);
 
     return (
         <Pill>

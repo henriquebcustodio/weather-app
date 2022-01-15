@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import CityContext from "./city-context";
-import geoDBApi from '../services/geodb-cities';
+import geodbAPI from '../services/geodb-cities';
 
 const CityProvider = props => {
     const [city, setCity] = useState();
@@ -9,7 +9,7 @@ const CityProvider = props => {
     const fetchData = async coords => {
         const { longitude, latitude } = coords;
         try {
-            const response = await geoDBApi.get(`/locations/${latitude}${longitude}/nearbyCities`, {
+            const response = await geodbAPI.get(`/locations/${latitude}${longitude}/nearbyCities`, {
                 params: { radius: '30' }
             });
             return response.data.data;

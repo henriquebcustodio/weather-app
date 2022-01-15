@@ -4,6 +4,6 @@ const weatherAPI = axios.create({
     baseURL: 'https://api.openweathermap.org/data/2.5/',
 });
 
-export const weatherAPIKey = '2d4d65e8740002073865867d3f090084';
+export const weatherAPIKey = process.env.REACT_APP_WEATHER_API_KEY;
 
 export default weatherAPI;

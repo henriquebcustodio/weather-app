@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import WeatherContext from './weather-context';
 import CityContext from './city-context';
 import weatherAPI, { weatherAPIKey } from '../services/weather-api';
+import aqicnAPI from '../services/aqicn-api';
 
 const WeatherProvider = props => {
     const [weatherData, setWeatherData] = useState({});
@@ -20,14 +21,12 @@ const WeatherProvider = props => {
                         appid: weatherAPIKey
                     }
                 });
-                const airPollutionResponse = await weatherAPI.get('air_pollution', {
+                const airQualityResponse = await aqicnAPI.get(`feed/geo:${city.latitude};${city.longitude}/`, {
                     params: {
-                        lat: city.latitude,
-                        lon: city.longitude,
-                        appid: weatherAPIKey
+                        token: process.env.REACT_APP_AQICN_API_KEY
                     }
                 });
-                return { ...weatherResponse.data, aqi: airPollutionResponse.data.list[0].main.aqi };
+                return { ...weatherResponse.data, aqi: airQualityResponse.data.data.aqi };
             } catch (err) {
                 console.log('An error has ocurred while fetching weather data.', err);
             }
