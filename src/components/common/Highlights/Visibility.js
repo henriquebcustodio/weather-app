@@ -12,8 +12,8 @@ const checkStatus = visibility => {
     if (visibility >= 3704 && visibility < 9260) {
         return {
             text: "Moderate",
-            emojiSymbol: "🤙",
-            emojiLabel: "shaka-sign-emoji"
+            emojiSymbol: "😐",
+            emojiLabel: "neutral-face-emoji"
         };
     }
     return {
