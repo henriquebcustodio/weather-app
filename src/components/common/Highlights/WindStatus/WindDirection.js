@@ -34,7 +34,6 @@ const IconWrapper = styled.div`
             transform: rotate(${props.angle + 180}deg);
         `;
     }}
-    /* transform: rotate(${props => props.angle - 180}deg); */
 `;
 
 const WindDirection = props => {
