@@ -5,7 +5,7 @@ const checkStatus = humidity => {
     if (humidity >= 70 || humidity < 25) {
         return {
             text: humidity >= 25 ? "High" : "Low",
-            emojiSymbol: "👎",
+            emojiSymbol: "👎🏻",
             emojiLabel: "thumbs-down-emoji"
         };
     }
@@ -19,7 +19,7 @@ const checkStatus = humidity => {
     if (humidity >= 30 && humidity < 60) {
         return {
             text: "Healthy",
-            emojiSymbol: "👍",
+            emojiSymbol: "👍🏻",
             emojiLabel: "thumbs-up-emoji"
         };
     }

@@ -38,7 +38,7 @@ const UVIndexWrapper = styled.div`
 
 const UVIndex = props => {
     const ref = useRef();
-    const onScreen = useOnScreen(ref, '-100px');
+    const onScreen = useOnScreen(ref, '-75px');
 
     useEffect(() => {
         if (onScreen) {

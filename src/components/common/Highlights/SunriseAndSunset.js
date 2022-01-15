@@ -7,7 +7,7 @@ const SunriseAndSunsetWrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    max-width: 12rem;
+    max-width: 14rem;
     height: 100%;
 `;
 

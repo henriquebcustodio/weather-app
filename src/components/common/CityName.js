@@ -14,6 +14,7 @@ const NameWrapper = styled.section`
         margin: 0;
         font-weight: 600;
         font-size: 1.6rem;
+        text-align: center;
     }
 
     h2 {

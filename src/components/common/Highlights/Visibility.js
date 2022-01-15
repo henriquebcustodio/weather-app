@@ -5,7 +5,7 @@ const checkStatus = visibility => {
     if (visibility < 3704) {
         return {
             text: "Poor",
-            emojiSymbol: "👎",
+            emojiSymbol: "👎🏻",
             emojiLabel: "thumbs-down-emoji"
         };
     }
@@ -18,7 +18,7 @@ const checkStatus = visibility => {
     }
     return {
         text: "Good",
-        emojiSymbol: "👍",
+        emojiSymbol: "👍🏻",
         emojiLabel: "thumbs-up-emoji"
     };
 };

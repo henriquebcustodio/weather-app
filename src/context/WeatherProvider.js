@@ -11,7 +11,7 @@ const WeatherProvider = props => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await weatherAPI.get('onecall', {
+                const weatherResponse = await weatherAPI.get('onecall', {
                     params: {
                         lat: city.latitude,
                         lon: city.longitude,
@@ -20,7 +20,14 @@ const WeatherProvider = props => {
                         appid: weatherAPIKey
                     }
                 });
-                return response.data;
+                const airPollutionResponse = await weatherAPI.get('air_pollution', {
+                    params: {
+                        lat: city.latitude,
+                        lon: city.longitude,
+                        appid: weatherAPIKey
+                    }
+                });
+                return { ...weatherResponse.data, aqi: airPollutionResponse.data.list[0].main.aqi };
             } catch (err) {
                 console.log('An error has ocurred while fetching weather data.', err);
             }

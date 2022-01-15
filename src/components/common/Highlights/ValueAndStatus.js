@@ -7,19 +7,26 @@ const ValueAndStatusWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
     height: 100%;
     padding-top: 1.5rem;
 `;
 
+const ValueWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`;
+
 const ValueAndStatus = props => {
     return (
         <ValueAndStatusWrapper>
-            <ValueDisplay
-                value={props.value}
-                unit={props.unit}
-            />
+            <ValueWrapper>
+                <ValueDisplay
+                    value={props.value}
+                    unit={props.unit}
+                />
+            </ValueWrapper>
             {props.footerData &&
                 <HighlightFooter
                     text={props.footerData.text}

@@ -8,6 +8,7 @@ import SunriseAndSunset from '../common/Highlights/SunriseAndSunset';
 import { unixToDateTime, getShortTime } from '../../utils/date-utils';
 import Humidity from '../common/Highlights/Humidity';
 import Visibility from '../common/Highlights/Visibility';
+import AirPollution from '../common/Highlights/AirPollution';
 
 const HighlightsWrapper = styled.section`
     display: flex;
@@ -42,6 +43,7 @@ const Highlights = () => {
     const sunset = getShortTime(unixToDateTime(weatherData.current.sunset));
     const humidity = weatherData.current.humidity;
     const visibility = weatherData.current.visibility;
+    const aqi = weatherData.aqi;
 
     return (
         <HighlightsWrapper>
@@ -76,7 +78,6 @@ const Highlights = () => {
                 <HighlightCard
                     title="Humidity"
                     withBorder={true}
-
                 >
                     <Humidity
                         humidity={humidity}
@@ -85,10 +86,17 @@ const Highlights = () => {
                 <HighlightCard
                     title="Visibility"
                     withBorder={true}
-
                 >
                     <Visibility
                         visibility={visibility}
+                    />
+                </HighlightCard>
+                <HighlightCard
+                    title="Air Pollution"
+                    withBorder={true}
+                >
+                    <AirPollution
+                        aqi={aqi}
                     />
                 </HighlightCard>
             </HighlightsGrid>

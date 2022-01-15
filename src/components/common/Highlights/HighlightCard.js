@@ -3,12 +3,11 @@ import styled from 'styled-components';
 const HighlightCardWrapper = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 15rem;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 1rem;
-    padding: 1rem;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
     overflow: hidden;
     ${props => {
         return props.withBorder ? `
