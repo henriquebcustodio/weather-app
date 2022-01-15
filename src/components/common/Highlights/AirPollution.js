@@ -1,4 +1,4 @@
-import ValueAndStatus from "./ValueAndStatus";
+import ValueAndStatus from "./ValueAndStatus/ValueAndStatus";
 
 const checkStatus = aqi => {
     if (aqi <= 2) {
@@ -29,6 +29,7 @@ const AirPollution = props => {
             value={props.aqi}
             unit=""
             footerData={footerData}
+            pillPercentage={props.aqi / 5}
         />
     );
 };

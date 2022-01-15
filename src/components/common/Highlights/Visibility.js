@@ -1,4 +1,4 @@
-import ValueAndStatus from "./ValueAndStatus";
+import ValueAndStatus from "./ValueAndStatus/ValueAndStatus";
 
 //https://rpg.stackexchange.com/questions/6610/a-summary-of-visibility
 const checkStatus = visibility => {

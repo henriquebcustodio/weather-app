@@ -1,4 +1,4 @@
-import ValueAndStatus from "./ValueAndStatus";
+import ValueAndStatus from "./ValueAndStatus/ValueAndStatus";
 
 //https://www.airthings.com/resources/everything-you-need-to-know-about-humidity
 const checkStatus = humidity => {
@@ -33,6 +33,7 @@ const Humidity = props => {
             value={props.humidity}
             unit="%"
             footerData={footerData}
+            pillPercentage={props.humidity / 100}
         />
     );
 };

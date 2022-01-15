@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import ValueDisplay from "./ValueDisplay";
-import HighlightFooter from "./HighlightFooter";
-import Emoji from "../../../UI/Emoji";
+import ValueDisplay from "../ValueDisplay";
+import HighlightFooter from "../HighlightFooter";
+import Emoji from "../../../../UI/Emoji";
+import PercentagePill from './PercentagePill';
 
 const ValueAndStatusWrapper = styled.div`
     display: flex;
@@ -15,10 +16,12 @@ const ValueAndStatusWrapper = styled.div`
 const ValueWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 `;
 
 const ValueAndStatus = props => {
+    console.log(props.pillPercentage);
     return (
         <ValueAndStatusWrapper>
             <ValueWrapper>
@@ -26,6 +29,7 @@ const ValueAndStatus = props => {
                     value={props.value}
                     unit={props.unit}
                 />
+                {props.pillPercentage ? <PercentagePill percentage={props.pillPercentage} /> : ""}
             </ValueWrapper>
             {props.footerData &&
                 <HighlightFooter
