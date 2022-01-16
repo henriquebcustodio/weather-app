@@ -1,5 +1,7 @@
+import { useState, Fragment } from 'react';
 import styled from 'styled-components';
 import { FiSettings } from 'react-icons/fi';
+import UnitChange from './UnitChange';
 
 const SettingsWrapper = styled.a`
     display: flex;
@@ -20,10 +22,30 @@ const SettingsWrapper = styled.a`
 `;
 
 const Settings = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const buttonClickHandler = () => {
+        setIsMenuOpen(true);
+    };
+
+    const menuCloseHandler = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
-        <SettingsWrapper role="button">
-            <FiSettings size={"1.3rem"} />
-        </SettingsWrapper>
+        <Fragment>
+            <SettingsWrapper
+                role="button"
+                onClick={buttonClickHandler}
+            >
+                <FiSettings size={"1.3rem"} />
+            </SettingsWrapper>
+            {isMenuOpen &&
+                <UnitChange
+                    onClose={menuCloseHandler}
+                />
+            }
+        </Fragment>
     );
 };
 

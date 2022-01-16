@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import UnitsContext from '../../context/units-context';
 import WeatherContext from '../../context/weather-context';
 import worldTimeAPI from '../../services/world-time-api';
 import { unixToDateTime, getShortTime } from '../../utils/date-utils';
@@ -21,6 +22,7 @@ const CurrentTimeWrapper = styled.section`
 
 const CurrentTime = props => {
     const { weatherData } = useContext(WeatherContext);
+    const { locale } = useContext(UnitsContext);
     const [currentDateTime, setCurrentDateTime] = useState();
 
     const { onUpdate } = props;
@@ -60,7 +62,7 @@ const CurrentTime = props => {
             {currentDateTime &&
                 <p>
                     {currentDateTime.weekdayLong},
-                    <span> {getShortTime(currentDateTime)}</span>
+                    <span> {getShortTime(currentDateTime, locale)}</span>
                 </p>
             }
         </CurrentTimeWrapper>

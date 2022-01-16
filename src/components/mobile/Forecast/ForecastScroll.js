@@ -1,4 +1,5 @@
-import React from 'react';
+import { useContext } from 'react';
+import UnitsContext from '../../../context/units-context';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import styled from 'styled-components';
 import WeekForecastItem from '../../common/Forecast/WeekForecastItem';
@@ -22,6 +23,8 @@ const List = styled.ul`
 `;
 
 const ForecastScroll = props => {
+    const { locale } = useContext(UnitsContext);
+
     return (
         <Wrapper>
             <List>
@@ -45,7 +48,7 @@ const ForecastScroll = props => {
                             const dt = unixToDateTime(hour.dt, props.timezone);
                             return (
                                 <DayForeCastItem
-                                    time={getShortTime(dt)}
+                                    time={getShortTime(dt, locale)}
                                     weatherId={hour.weather[0].id}
                                     temp={Math.round(hour.temp)}
                                     isNight={dateTimeIsNight(dt)}

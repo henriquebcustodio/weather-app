@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import WeatherContext from '../../../context/weather-context';
+import UnitsContext from '../../../context/units-context';
 import DetailsCard from './DetailsCard';
 import { FiDroplet, FiSun, FiWind } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
@@ -16,6 +17,7 @@ const SecondaryDetailsWrapper = styled.section`
 const SecondaryDetails = () => {
     const theme = useTheme();
     const { weatherData } = useContext(WeatherContext);
+    const { unitsToDisplay } = useContext(UnitsContext);
 
     return (
         <SecondaryDetailsWrapper>
@@ -37,7 +39,7 @@ const SecondaryDetails = () => {
                 icon={<FiWind size='1.5rem' style={{
                     color: theme.blue,
                 }} />}
-                value={`${weatherData.current.wind_speed} km/h`}
+                value={`${weatherData.current.wind_speed} ${unitsToDisplay.speed}`}
                 description='Wind'
             />
         </SecondaryDetailsWrapper>

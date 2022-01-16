@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import UnitsContext from '../../../../context/units-context';
 import WindDirection from './WindDirection';
 import ValueDisplay from '../ValueDisplay';
 
@@ -12,9 +14,11 @@ const WindStatusWrapper = styled.div`
 `;
 
 const WindStatus = props => {
+    const { unitsToDisplay } = useContext(UnitsContext);
+
     return (
         <WindStatusWrapper>
-            <ValueDisplay value={props.windSpeed} unit="km/h" />
+            <ValueDisplay value={props.windSpeed} unit={unitsToDisplay.speed} />
             <footer>
                 <WindDirection angle={props.windAngle} />
             </footer>

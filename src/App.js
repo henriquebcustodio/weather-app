@@ -3,16 +3,19 @@ import { ThemeProvider } from "styled-components";
 import colorScheme from "./colors/color-scheme";
 import CityProvider from "./context/CityProvider";
 import WeatherProvider from "./context/WeatherProvider";
+import UnitsProvider from "./context/UnitsProvider";
 
 const App = () => {
     return (
-        <CityProvider>
-            <WeatherProvider>
-                <ThemeProvider theme={colorScheme}>
-                    <Mobile />
-                </ThemeProvider>
-            </WeatherProvider>
-        </CityProvider>
+        <UnitsProvider>
+            <CityProvider>
+                <WeatherProvider>
+                    <ThemeProvider theme={colorScheme}>
+                        <Mobile />
+                    </ThemeProvider>
+                </WeatherProvider>
+            </CityProvider>
+        </UnitsProvider>
     );
 };
 

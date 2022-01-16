@@ -7,8 +7,9 @@ const SunriseAndSunsetWrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    max-width: 14rem;
+    max-width: 20rem;
     height: 100%;
+    white-space: nowrap;
 `;
 
 const DataWrapper = styled.div`
@@ -32,7 +33,7 @@ const IconWrapper = styled.div`
 const Time = styled.p`
     margin: 0;
     margin-left: 2rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
     overflow: hidden;
     text-overflow: ellipsis;
 `;

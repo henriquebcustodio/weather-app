@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import WeatherContext from "../../context/weather-context";
+import UnitsContext from "../../context/units-context";
 
 const TemperatureWrapper = styled.section`
     display: flex;
@@ -15,11 +16,12 @@ const TemperatureWrapper = styled.section`
 
 const Temperature = () => {
     const { weatherData } = useContext(WeatherContext);
+    const { unitsToDisplay } = useContext(UnitsContext);
     const currentTemperature = Math.round(weatherData.current.temp);
 
     return (
         <TemperatureWrapper>
-            <span>{currentTemperature}°C</span>
+            <span>{currentTemperature}{unitsToDisplay.temperature}</span>
         </TemperatureWrapper>
     );
 };

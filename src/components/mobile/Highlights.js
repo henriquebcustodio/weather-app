@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import HighlightCard from '../common/Highlights/HighlightCard';
 import UVIndex from '../common/Highlights/UVIndex';
 import WeatherContext from '../../context/weather-context';
+import UnitsContext from '../../context/units-context';
 import WindStatus from '../common/Highlights/WindStatus/WindStatus';
 import SunriseAndSunset from '../common/Highlights/SunriseAndSunset';
 import { unixToDateTime, getShortTime } from '../../utils/date-utils';
@@ -36,11 +37,13 @@ const Title = styled.h2`
 
 const Highlights = () => {
     const { weatherData } = useContext(WeatherContext);
+    const { locale } = useContext(UnitsContext);
+
     const uvi = Math.round(weatherData.current.uvi);
     const windSpeed = weatherData.current.wind_speed;
     const windDirection = weatherData.current.wind_deg;
-    const sunrise = getShortTime(unixToDateTime(weatherData.current.sunrise));
-    const sunset = getShortTime(unixToDateTime(weatherData.current.sunset));
+    const sunrise = getShortTime(unixToDateTime(weatherData.current.sunrise), locale);
+    const sunset = getShortTime(unixToDateTime(weatherData.current.sunset), locale);
     const humidity = weatherData.current.humidity;
     const visibility = weatherData.current.visibility;
     const aqi = weatherData.aqi;

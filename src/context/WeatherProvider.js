@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import WeatherContext from './weather-context';
+import UnitsContext from './units-context';
 import CityContext from './city-context';
 import weatherAPI, { weatherAPIKey } from '../services/weather-api';
 import aqicnAPI from '../services/aqicn-api';
@@ -8,6 +9,7 @@ const WeatherProvider = props => {
     const [weatherData, setWeatherData] = useState({});
     const [isBusy, setIsBusy] = useState(true);
     const { city, isBusy: cityCtxBusy } = useContext(CityContext);
+    const { units } = useContext(UnitsContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,7 +19,7 @@ const WeatherProvider = props => {
                         lat: city.latitude,
                         lon: city.longitude,
                         exclude: 'minutely',
-                        units: 'metric',
+                        units: units,
                         appid: weatherAPIKey
                     }
                 });
@@ -54,7 +56,7 @@ const WeatherProvider = props => {
             clearInterval(interval);
         };
 
-    }, [city, cityCtxBusy]);
+    }, [units, city, cityCtxBusy]);
 
     const weatherContext = {
         weatherData: weatherData,
