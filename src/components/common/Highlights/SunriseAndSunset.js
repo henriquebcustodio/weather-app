@@ -33,7 +33,7 @@ const IconWrapper = styled.div`
 const Time = styled.p`
     margin: 0;
     margin-left: 2rem;
-    font-size: 2rem;
+    font-size: 2.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
 `;
