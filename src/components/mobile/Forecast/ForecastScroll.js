@@ -31,7 +31,7 @@ const ForecastScroll = props => {
                 <ScrollMenu>
                     {props.isWeekly &&
                         props.data.map(day => {
-                            const dt = unixToDateTime(day.dt, props.timezone);
+                            const dt = unixToDateTime(day.dt, props.timezone, locale);
                             return (
                                 <WeekForecastItem
                                     weekDayShort={dt.weekdayShort}
@@ -45,10 +45,10 @@ const ForecastScroll = props => {
                         })}
                     {!props.isWeekly &&
                         props.data.map(hour => {
-                            const dt = unixToDateTime(hour.dt, props.timezone);
+                            const dt = unixToDateTime(hour.dt, props.timezone, locale);
                             return (
                                 <DayForeCastItem
-                                    time={getShortTime(dt, locale)}
+                                    time={getShortTime(dt)}
                                     weatherId={hour.weather[0].id}
                                     temp={Math.round(hour.temp)}
                                     isNight={dateTimeIsNight(dt)}

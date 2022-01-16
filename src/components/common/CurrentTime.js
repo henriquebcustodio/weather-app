@@ -33,7 +33,7 @@ const CurrentTime = props => {
         const fetchData = async currentTimezone => {
             try {
                 const response = await worldTimeAPI.get(`/timezone/${currentTimezone}`);
-                return unixToDateTime(response.data.unixtime, currentTimezone);
+                return unixToDateTime(response.data.unixtime, currentTimezone, locale);
             } catch (err) {
                 console.log('An error ocurred while fetching the current time.', err);
             }
@@ -55,14 +55,14 @@ const CurrentTime = props => {
             isMounted = false;
             clearInterval(interval);
         };
-    }, [weatherData.timezone, onUpdate]);
+    }, [weatherData.timezone, onUpdate, locale]);
 
     return (
         <CurrentTimeWrapper>
             {currentDateTime &&
                 <p>
                     {currentDateTime.weekdayLong},
-                    <span> {getShortTime(currentDateTime, locale)}</span>
+                    <span> {getShortTime(currentDateTime)}</span>
                 </p>
             }
         </CurrentTimeWrapper>

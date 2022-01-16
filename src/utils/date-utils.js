@@ -1,11 +1,11 @@
 import { DateTime } from 'luxon';
 
-export const unixToDateTime = (unixTimestamp, timezone) => {
-    return DateTime.fromSeconds(unixTimestamp).setZone(timezone);
+export const unixToDateTime = (unixTimestamp, timezone, locale) => {
+    return DateTime.fromSeconds(unixTimestamp).setZone(timezone).setLocale(locale);
 };
 
-export const getShortTime = (dt, locale) => {
-    return dt.setLocale(locale).toLocaleString(DateTime.TIME_SIMPLE);
+export const getShortTime = (dt) => {
+    return dt.toLocaleString(DateTime.TIME_SIMPLE);
 };
 
 export const dateTimeIsNight = (dt) => {
