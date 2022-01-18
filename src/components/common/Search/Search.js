@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { FiSearch, FiArrowLeft } from 'react-icons/fi';
 import SearchDropdown from './SearchDropdown';
-import geodbAPI from '../../../services/geodb-cities';
+import teleportAPI from '../../../services/teleport-api';
 
 const InputWrapper = styled.form`
     display: flex;
@@ -59,19 +59,15 @@ const Search = props => {
     };
 
     useEffect(() => {
-        const controller = new AbortController();
-
         const fetchData = async query => {
             try {
-                const response = await geodbAPI.get("/cities", {
+                const response = await teleportAPI.get("/cities/", {
                     params: {
-                        limit: 10,
-                        namePrefix: query,
-                        minPopulation: 20000,
+                        search: query,
+                        embed: 'city:search-results/city:item'
                     },
-                    signal: controller.signal
                 });
-                return response.data.data;
+                return response.data._embedded['city:search-results'].slice(0, 10);
             } catch (err) {
                 console.log('An error has ocurred while fetching city data.', err);
                 return [];
@@ -85,11 +81,10 @@ const Search = props => {
             } else {
                 setSearchResults([]);
             }
-        }, 400);
+        }, 300);
 
         return () => {
             clearTimeout(timer);
-            controller.abort();
         };
     }, [query]);
 

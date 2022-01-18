@@ -11,13 +11,14 @@ const DropdownList = styled.ul`
     width: 100%;
     list-style: none;
     background-color: white;
-    border: 1px solid ${props => props.theme.backgroundGray};
+    border: 1.5px solid ${props => props.theme.backgroundGray};
     box-sizing: border-box;
     border-radius: 5px;
     margin: 0;
     margin-top: 0.5rem;
     padding: 0 1rem;
     padding-top: 1rem;
+    z-index: 20;
 `;
 
 const CurrentLocationLi = styled.li`
@@ -52,8 +53,8 @@ const SearchDropdown = props => {
             {props.results.length > 0 &&
                 props.results.map(result => {
                     return <SearchListItem
-                        data={result}
-                        key={result.id}
+                        data={result._embedded['city:item']}
+                        key={result._embedded['city:item'].geoname_id}
                         onClick={searchResultClickHandler}
                     />;
                 })}

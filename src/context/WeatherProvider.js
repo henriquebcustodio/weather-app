@@ -16,14 +16,14 @@ const WeatherProvider = props => {
             try {
                 const weatherResponse = await weatherAPI.get('onecall', {
                     params: {
-                        lat: city.latitude,
-                        lon: city.longitude,
+                        lat: city.location.latlon.latitude,
+                        lon: city.location.latlon.longitude,
                         exclude: 'minutely',
                         units: units,
                         appid: weatherAPIKey
                     }
                 });
-                const airQualityResponse = await aqicnAPI.get(`feed/geo:${city.latitude};${city.longitude}/`, {
+                const airQualityResponse = await aqicnAPI.get(`feed/geo:${city.location.latlon.latitude};${city.location.latlon.longitude}/`, {
                     params: {
                         token: process.env.REACT_APP_AQICN_API_KEY
                     }

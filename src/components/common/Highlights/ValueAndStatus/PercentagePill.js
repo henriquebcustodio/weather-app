@@ -26,7 +26,6 @@ const Ball = styled.div`
             transform: translateY(${props.yTranslation}rem)
         `;
     }}
-    /* transform: ${props => `translateY(${props.yTranslation}rem)`}; */
     
 `;
 

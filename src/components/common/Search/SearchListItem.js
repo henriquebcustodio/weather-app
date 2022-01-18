@@ -15,7 +15,7 @@ const SearchListItem = props => {
 
     return (
         <ListItem onClick={clickHandler}>
-            {`${props.data.city}, ${props.data.region}, ${props.data.country}`}
+            {props.data.full_name}
         </ListItem>
     );
 };
