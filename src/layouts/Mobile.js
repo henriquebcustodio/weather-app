@@ -1,4 +1,4 @@
-import { useContext, Fragment } from 'react';
+import { useContext, Fragment, useState } from 'react';
 import styled from 'styled-components';
 import colorScheme from '../colors/color-scheme';
 import CityName from '../components/common/CityName';
@@ -11,11 +11,13 @@ import Highlights from '../components/mobile/Highlights';
 import ReactLoading from 'react-loading';
 
 const MobileWrapper = styled.main`
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    overflow-y: scroll;
 `;
 
 const Break = styled.hr`
@@ -42,11 +44,19 @@ const LoadingWrapper = styled.section`
 const Mobile = () => {
     const { isBusy: weatherCtxBusy } = useContext(WeatherContext);
     const { isBusy: cityCtxBusy } = useContext(CityContext);
+    const [showContent, setShowContent] = useState(true);
+
+    const isSearchingHandler = newShowContent => {
+        setShowContent(newShowContent);
+    };
 
     return (
-        <MobileWrapper>
-            <Header />
-            {(!weatherCtxBusy && !cityCtxBusy) &&
+        <MobileWrapper id="main">
+            <Header
+                setShowContent={isSearchingHandler}
+                searchDropdownContainer={document.getElementById('main')}
+            />
+            {(!weatherCtxBusy && !cityCtxBusy && showContent) &&
                 <Fragment>
                     <CityName />
                     <CurrentWeather />
@@ -56,7 +66,7 @@ const Mobile = () => {
                     <Highlights />
                 </Fragment>
             }
-            {(weatherCtxBusy || cityCtxBusy) &&
+            {(showContent && (weatherCtxBusy || cityCtxBusy)) &&
                 <LoadingWrapper>
                     <ReactLoading
                         type={'bubbles'}

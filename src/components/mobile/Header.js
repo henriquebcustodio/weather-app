@@ -8,27 +8,32 @@ const HeaderWrapper = styled.header`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    min-height: 2.5rem;
     height: 2.5rem;
     transition: all 0.2s;
+    z-index: 10;
 `;
 
-const Header = () => {
+const Header = props => {
     const [showSettings, setShowSettings] = useState(true);
 
-    const showSettingsHandler = () => {
+    const onSearchEndHandler = () => {
         setShowSettings(true);
+        props.setShowContent(true);
     };
 
-    const hideSettingsHandler = () => {
+    const onSearchStartHandler = () => {
         setShowSettings(false);
+        props.setShowContent(false);
     };
 
     return (
         <Fragment>
             <HeaderWrapper>
                 <Search
-                    onFocus={hideSettingsHandler}
-                    onBlur={showSettingsHandler}
+                    onSearchStart={onSearchStartHandler}
+                    onSearchEnd={onSearchEndHandler}
+                    searchDropdownContainer={props.searchDropdownContainer}
                 />
                 {showSettings && <Settings />}
             </HeaderWrapper>

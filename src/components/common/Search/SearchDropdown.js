@@ -1,32 +1,36 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { FiMapPin } from 'react-icons/fi';
+import { BiTargetLock } from 'react-icons/bi';
 import SearchListItem from './SearchListItem';
 import CityContext from '../../../context/city-context';
 
-const DropdownList = styled.ul`
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+const DropdownWrapper = styled.div`
+    display: block;
     width: 100%;
-    list-style: none;
-    background-color: white;
-    border: 1.5px solid ${props => props.theme.backgroundGray};
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin: 0;
-    margin-top: 0.5rem;
-    padding: 0 1rem;
-    padding-top: 1rem;
-    z-index: 20;
 `;
 
-const CurrentLocationLi = styled.li`
+const DropdownList = styled.ul`
     display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    color: ${props => props.theme.blue};
-    cursor: pointer;
+    flex-direction: column;
+    list-style: none;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    animation: slide-down 200ms ease-in-out;
+
+    @keyframes slide-down {
+        from {
+            opacity: 0;
+            transform: translateY(60%)
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
 `;
 
 const SearchDropdown = props => {
@@ -42,23 +46,31 @@ const SearchDropdown = props => {
         props.onResultSelected();
     };
 
+    const onTouchStartHandler = event => {
+        props.blurInput();
+    };
+
     return (
-        <DropdownList>
-            {props.results.length === 0 &&
-                <CurrentLocationLi onClick={currentLocationClickHandler}>
-                    <FiMapPin style={{ marginRight: '0.5rem' }} />
-                    Use Current location
-                </CurrentLocationLi>
-            }
-            {props.results.length > 0 &&
-                props.results.map(result => {
-                    return <SearchListItem
-                        data={result._embedded['city:item']}
-                        key={result._embedded['city:item'].geoname_id}
-                        onClick={searchResultClickHandler}
-                    />;
-                })}
-        </DropdownList>
+        <DropdownWrapper>
+            <DropdownList onTouchStart={onTouchStartHandler}>
+                {props.results.length === 0 &&
+                    <SearchListItem
+                        onClick={currentLocationClickHandler}
+                        data={{ full_name: 'Use Current Location' }}
+                        customIcon={<BiTargetLock />}
+                    >
+                    </SearchListItem>
+                }
+                {props.results.length > 0 &&
+                    props.results.map(result => {
+                        return <SearchListItem
+                            data={result._embedded['city:item']}
+                            key={result._embedded['city:item'].geoname_id}
+                            onClick={searchResultClickHandler}
+                        />;
+                    })}
+            </DropdownList>
+        </DropdownWrapper>
     );
 };
 

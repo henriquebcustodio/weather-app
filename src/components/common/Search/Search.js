@@ -1,24 +1,21 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import { FiSearch, FiArrowLeft } from 'react-icons/fi';
+import { FiSearch, FiArrowLeft, FiXCircle } from 'react-icons/fi';
 import SearchDropdown from './SearchDropdown';
 import teleportAPI from '../../../services/teleport-api';
 
-const InputWrapper = styled.form`
+const SearchWrapper = styled.form`
     display: flex;
     align-items: center;
     width: 100%;
     height: 2rem;
-`;
-
-const SearchWrapper = styled.div`
-    position: relative;
-    width: 100%;
+    background-color: white;
 `;
 
 const Input = styled.input`
     color: black;
-    font-weight: 600;
+    font-weight: 500;
     font-family: inherit;
     font-size: 1rem;
     white-space: nowrap;
@@ -39,17 +36,22 @@ const Input = styled.input`
     }
 `;
 
-const Label = styled.label`
+const Icon = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     padding-bottom: 2px;
     cursor: pointer;
+
+    svg {
+        height: 1.3rem;
+        width: 1.3rem;
+    }
 `;
 
 const Search = props => {
-    const [isFocused, setIsFocused] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
     const [query, setQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const inputRef = useRef();
@@ -81,56 +83,89 @@ const Search = props => {
             } else {
                 setSearchResults([]);
             }
-        }, 300);
+        }, 250);
 
         return () => {
             clearTimeout(timer);
         };
     }, [query]);
 
-    const focusHandler = () => {
-        setIsFocused(true);
-        props.onFocus();
+    const startSearch = () => {
+        if (!isSearching) {
+            setIsSearching(true);
+            props.onSearchStart();
+        }
     };
 
-    const blurHandler = () => {
-        setIsFocused(false);
-        clearInput();
-        props.onBlur();
-    };
-
-    const clearInput = () => {
-        inputRef.current.value = '';
+    const resetQuery = () => {
+        setQuery('');
         setSearchResults([]);
     };
 
+    const endSearch = () => {
+        setIsSearching(false);
+        resetQuery();
+        props.onSearchEnd();
+    };
+
+    const clearInput = () => {
+        resetQuery();
+        focusInput();
+    };
+
+    const focusInput = () => {
+        inputRef.current.focus();
+    };
+
+    const blurInput = () => {
+        document.activeElement.blur();
+    };
+
     return (
-        <SearchWrapper>
-            <InputWrapper focused={isFocused} autocomplete="false">
-                {isFocused &&
-                    <Label
-                        onClick={blurHandler}
+        <Fragment>
+            <SearchWrapper isSearching={isSearching} autocomplete="false">
+                {isSearching &&
+                    <Icon
+                        onClick={endSearch}
+                        aria-label="back"
                     >
-                        <FiArrowLeft size={"1.3rem"} />
-                    </Label>
+                        <FiArrowLeft />
+                    </Icon>
                 }
-                {!isFocused &&
-                    <Label htmlFor="search">
-                        <FiSearch size={"1.3rem"} />
-                    </Label>
+                {!isSearching &&
+                    <Icon
+                        onClick={focusInput}
+                    >
+                        <FiSearch />
+                    </Icon>
                 }
                 <Input
                     placeholder="Search for places..."
-                    id="search"
-                    type="search"
-                    onFocus={focusHandler}
+                    type="text"
+                    aria-label="search"
+                    onFocus={startSearch}
                     autocomplete="off"
                     ref={inputRef}
                     onChange={queryChangeHandler}
+                    value={query}
                 />
-            </InputWrapper>
-            {isFocused && <SearchDropdown results={searchResults} onResultSelected={blurHandler} />}
-        </SearchWrapper>
+                {isSearching && (query.length > 0) &&
+                    <Icon
+                        onClick={clearInput}
+                    >
+                        <FiXCircle />
+                    </Icon>
+                }
+            </SearchWrapper>
+            {isSearching &&
+                ReactDOM.createPortal(
+                    <SearchDropdown
+                        results={searchResults}
+                        onResultSelected={endSearch}
+                        blurInput={blurInput}
+                    />, props.searchDropdownContainer)
+            }
+        </Fragment>
     );
 };
 
