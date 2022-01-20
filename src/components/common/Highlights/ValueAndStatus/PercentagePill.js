@@ -35,11 +35,7 @@ const PercentagePill = props => {
     const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
-        if (onScreen) {
-            setAnimate(true);
-        } else {
-            setAnimate(false);
-        }
+        if (onScreen) setAnimate(true);
     }, [onScreen]);
 
     const getBallYTranslation = percentage => {

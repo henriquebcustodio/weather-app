@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useOnScreen from '../../../utils/hooks/useOnScreen';
 import styled from 'styled-components';
 import { Path } from 'progressbar.js';
@@ -37,6 +37,7 @@ const UVIndexWrapper = styled.div`
 `;
 
 const UVIndex = props => {
+    const [ranAnimation, setRanAnimation] = useState(false);
     const ref = useRef();
     const onScreen = useOnScreen(ref, '-75px');
 
@@ -47,10 +48,17 @@ const UVIndex = props => {
                 duration: 1000,
                 easing: 'easeOut'
             });
-            path.set(0);
-            path.animate(props.uvi * (0.2 / 3));
+            const percentage = props.uvi * (0.2 / 3);
+
+            if (!ranAnimation) {
+                path.animate(percentage);
+                setRanAnimation(true);
+            } else {
+                path.set(percentage);
+            }
         }
-    }, [props.uvi, onScreen]);
+
+    }, [props.uvi, onScreen, ranAnimation]);
 
     return (
         <UVIndexWrapper ref={ref}>

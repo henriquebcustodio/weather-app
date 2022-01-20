@@ -42,11 +42,7 @@ const WindDirection = props => {
     const onScreen = useOnScreen(windIconRef);
 
     useEffect(() => {
-        if (onScreen) {
-            setAnimate(true);
-        } else {
-            setAnimate(false);
-        }
+        if (onScreen) setAnimate(true);
     }, [onScreen]);
 
     return (
