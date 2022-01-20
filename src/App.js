@@ -9,7 +9,6 @@ import useWindowWide from "./hooks/useWindowWide";
 
 const App = () => {
     const isDesktop = useWindowWide(800);
-    console.log(isDesktop);
 
     return (
         <UnitsProvider>
