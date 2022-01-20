@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import useOnScreen from '../../../../utils/hooks/useOnScreen';
+import useOnScreen from '../../../../hooks/useOnScreen';
 import styled from 'styled-components';
 
 const Pill = styled.div`

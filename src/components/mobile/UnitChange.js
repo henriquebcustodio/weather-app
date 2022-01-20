@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styled from "styled-components";
-import Modal from '../../UI/Modal/Modal';
+import Modal from '../UI/Modal/Modal';
 import UnitChangeButton from './UnitChangeButton';
 import UnitsContext from '../../context/units-context';
 
