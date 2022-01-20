@@ -21,8 +21,13 @@ const HighlightsWrapper = styled.section`
 const HighlightsGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    grid-row-gap: 1.5rem;
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
     width: 100%;
+
+    @media screen and (min-width: 38rem) {
+        grid-template-columns: repeat(2, 1fr)
+    }
 `;
 
 const Title = styled.h2`
