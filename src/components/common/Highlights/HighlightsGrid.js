@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from "styled-components";
 import HighlightCard from './HighlightCard';
-import UVIndex from './UVIndex';
+import UVIndex from './UVIndex/UVIndex';
 import WeatherContext from '../../../context/weather-context';
 import UnitsContext from '../../../context/units-context';
 import WindStatus from './WindStatus/WindStatus';
