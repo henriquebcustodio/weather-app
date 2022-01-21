@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import styled from "styled-components";
 import Modal from '../UI/Modal/Modal';
-import UnitChangeButton from './UnitChangeButton';
+import UnitChangeButton from '../common/UnitChangeButton';
 import UnitsContext from '../../context/units-context';
 
-const UnitChangeWrapper = styled.div`
+const UnitChangeWrapper = styled.menu`
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -12,6 +12,7 @@ const UnitChangeWrapper = styled.div`
     height: 5rem;
     box-sizing: border-box;
     padding: 0 3rem;
+    margin: 0;
 `;
 
 const UnitChange = props => {

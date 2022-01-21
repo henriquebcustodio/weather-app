@@ -28,7 +28,7 @@ const SideBar = () => {
     };
 
     return (
-        <SimpleBar style={{ width: "20%", minWidth: "20rem" }}>
+        <SimpleBar style={{ width: "20%", height: "100%", minWidth: "20rem" }}>
             <SideBarWrapper id="sidebar">
                 <Header
                     isDesktop={true}

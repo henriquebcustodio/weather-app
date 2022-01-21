@@ -10,6 +10,7 @@ const ForecastWrapper = styled.section`
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 1.5rem;
 `;
 
 const Forecast = () => {
