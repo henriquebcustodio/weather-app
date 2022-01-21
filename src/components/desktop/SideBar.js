@@ -1,5 +1,7 @@
 import { useState, useContext, Fragment } from 'react';
 import styled from "styled-components";
+import SimpleBar from 'simplebar-react';
+import "simplebar/src/simplebar.css";
 import WeatherContext from '../../context/weather-context';
 import CityContext from '../../context/city-context';
 import CityName from '../common/CityName';
@@ -11,9 +13,9 @@ const SideBarWrapper = styled.section`
     flex-direction: column;
     align-items: center;
     width: 20%;
-    min-width: 17rem;
+    min-width: 20rem;
     padding: 2rem;
-    overflow-y: auto;
+    box-sizing: border-box;
 `;
 
 const SideBar = () => {
@@ -26,19 +28,21 @@ const SideBar = () => {
     };
 
     return (
-        <SideBarWrapper id="sidebar">
-            <Header
-                isDesktop={true}
-                setShowContent={isSearchingHandler}
-                searchDropdownContainer={document.getElementById('sidebar')}
-            />
-            {(!weatherCtxBusy && !cityCtxBusy && showContent) &&
-                <Fragment>
-                    <CityName />
-                    <CurrentWeather />
-                </Fragment>
-            }
-        </SideBarWrapper>
+        <SimpleBar style={{ width: "20%", minWidth: "20rem" }}>
+            <SideBarWrapper id="sidebar">
+                <Header
+                    isDesktop={true}
+                    setShowContent={isSearchingHandler}
+                    searchDropdownContainer={document.getElementById('sidebar')}
+                />
+                {(!weatherCtxBusy && !cityCtxBusy && showContent) &&
+                    <Fragment>
+                        <CityName />
+                        <CurrentWeather />
+                    </Fragment>
+                }
+            </SideBarWrapper>
+        </SimpleBar>
     );
 };
 
