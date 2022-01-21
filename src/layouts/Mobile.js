@@ -4,7 +4,7 @@ import colorScheme from '../colors/color-scheme';
 import CityName from '../components/common/CityName';
 import CurrentWeather from '../components/common/CurrentWeather';
 import Forecast from '../components/mobile/Forecast/Forecast';
-import Header from '../components/mobile/Header';
+import Header from '../components/common/Header';
 import WeatherContext from '../context/weather-context';
 import CityContext from '../context/city-context';
 import Highlights from '../components/mobile/Highlights';

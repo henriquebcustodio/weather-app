@@ -28,7 +28,6 @@ const Input = styled.input`
     box-sizing: border-box;
     padding: 0;
     border: none;
-    cursor: pointer;
 
     &::placeholder {
         color: inherit;

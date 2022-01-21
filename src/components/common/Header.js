@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react';
 import styled from 'styled-components';
-import Search from "../common/Search/Search";
-import Settings from './Settings';
+import Search from "./Search/Search";
+import Settings from '../mobile/Settings';
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -35,7 +35,7 @@ const Header = props => {
                     onSearchEnd={onSearchEndHandler}
                     searchDropdownContainer={props.searchDropdownContainer}
                 />
-                {showSettings && <Settings />}
+                {!props.isDesktop && showSettings && <Settings />}
             </HeaderWrapper>
         </Fragment>
     );
