@@ -5,22 +5,20 @@ import colorScheme from "./colors/color-scheme";
 import CityProvider from "./context/CityProvider";
 import WeatherProvider from "./context/WeatherProvider";
 import UnitsProvider from "./context/UnitsProvider";
-import useWindowWide from "./hooks/useWindowWide";
+import MediaQuery from 'react-responsive';
 
 const App = () => {
-    const isDesktop = useWindowWide(800);
-
     return (
         <UnitsProvider>
             <CityProvider>
                 <WeatherProvider>
                     <ThemeProvider theme={colorScheme}>
-                        {!isDesktop &&
+                        <MediaQuery maxWidth={800}>
                             <Mobile />
-                        }
-                        {isDesktop &&
+                        </MediaQuery>
+                        <MediaQuery minWidth={800}>
                             <Desktop />
-                        }
+                        </MediaQuery>
                     </ThemeProvider>
                 </WeatherProvider>
             </CityProvider>

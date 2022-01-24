@@ -6,7 +6,7 @@ import UnitChangeButton from '../common/UnitChangeButton';
 const UnitChangeWrapper = styled.menu`
     display: flex;
     justify-content: space-between;
-    width: 7rem;
+    width: 6.5rem;
     margin: 0;
 `;
 
