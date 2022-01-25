@@ -4,6 +4,7 @@ import WeatherContext from '../context/weather-context';
 import CityContext from '../context/city-context';
 import MainSection from '../components/desktop/MainSection';
 import SideBar from '../components/desktop/SideBar';
+import BubbleLoading from '../components/UI/BubbleLoading';
 
 const DesktopWrapper = styled.main`
     display: flex;
@@ -23,6 +24,9 @@ const Desktop = () => {
                     <SideBar />
                     <MainSection />
                 </Fragment>
+            }
+            {(weatherCtxBusy || cityCtxBusy) &&
+                <BubbleLoading />
             }
         </DesktopWrapper>
     );
