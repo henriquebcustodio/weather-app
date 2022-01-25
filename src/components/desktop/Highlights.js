@@ -6,6 +6,8 @@ const HighlightsWrapper = styled.section`
     flex-direction: column;
     width: 100%;
     max-width: 69rem;
+    padding: 0 5px;
+    box-sizing: border-box;
 `;
 
 const Title = styled.h2`
