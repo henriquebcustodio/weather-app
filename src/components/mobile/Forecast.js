@@ -10,7 +10,7 @@ const ForecastWrapper = styled.section`
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 
     menu {
         margin-bottom: 1.5rem;

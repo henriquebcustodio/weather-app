@@ -12,7 +12,7 @@ const SideBarWrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20%;
+    width: 100%;
     min-width: 20rem;
     padding: 2rem;
     box-sizing: border-box;
