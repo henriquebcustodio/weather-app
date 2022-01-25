@@ -18,7 +18,7 @@ const HighlightCardWrapper = styled.section`
 
     h3 {
         font-weight: 500;
-        color: ${props => props.theme.gray};
+        color: ${props => props.theme.textGray};
         margin: 0;
         margin-bottom: 1rem;
     }

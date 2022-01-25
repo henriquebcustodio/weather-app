@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const SelectorWrapper = styled.a`
     display: flex;
     align-items: top;
-    color: ${props => props.theme.gray};
+    color: ${props => props.theme.textGray};
     margin: 0rem 0.5rem;
     text-decoration: none;
     font-weight: 600;
