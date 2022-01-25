@@ -6,7 +6,8 @@ import ForecastScroll from '../common/Forecast/ForecastScroll';
 const ForecastWrapper = styled.section`
     display: block;
     max-width: 69rem;
-    margin-top: 1.5rem;
+    width: 100%;
+    margin-top: 3rem;
 `;
 
 const Forecast = props => {

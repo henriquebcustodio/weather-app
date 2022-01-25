@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import styled from "styled-components";
 import HighlightCard from './HighlightCard';
 import UVIndex from './UVIndex/UVIndex';
@@ -11,19 +11,36 @@ import Humidity from './Humidity';
 import Visibility from './Visibility';
 import AirQuality from './AirQuality';
 
-const Grid = styled.div`
-display: grid;
-grid-template-columns: 1fr;
-row-gap: 1.5rem;
-column-gap: 1.5rem;
-width: 100%;
+const MobileGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
+    width: 100%;
 
-@media screen and (min-width: 38rem) {
-    grid-template-columns: repeat(2, 1fr)
-}
+    @media screen and (min-width: 38rem) {
+        grid-template-columns: repeat(2, 1fr)
+    }
 `;
 
-const HighlightsGrid = () => {
+const DesktopGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
+    width: 100%;
+
+    @media screen and (min-width: 58rem) {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    @media screen and (min-width: 85rem) {
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+`;
+
+const HighlightsGrid = props => {
     const { weatherData } = useContext(WeatherContext);
     const { locale } = useContext(UnitsContext);
 
@@ -36,11 +53,11 @@ const HighlightsGrid = () => {
     const visibility = weatherData.current.visibility;
     const aqi = weatherData.aqi;
 
-    return (
-        <Grid>
+    const GridContent = (
+        <Fragment>
             <HighlightCard
                 title="UV Index"
-                withBorder={true}
+                withBorder={props.withBorders}
             >
                 <UVIndex
                     uvi={uvi}
@@ -48,7 +65,7 @@ const HighlightsGrid = () => {
             </HighlightCard>
             <HighlightCard
                 title="Wind Status"
-                withBorder={true}
+                withBorder={props.withBorders}
             >
                 <WindStatus
                     windSpeed={windSpeed}
@@ -57,7 +74,7 @@ const HighlightsGrid = () => {
             </HighlightCard>
             <HighlightCard
                 title="Sunrise & Sunset"
-                withBorder={true}
+                withBorder={props.withBorders}
             >
                 <SunriseAndSunset
                     sunrise={sunrise}
@@ -66,7 +83,7 @@ const HighlightsGrid = () => {
             </HighlightCard>
             <HighlightCard
                 title="Humidity"
-                withBorder={true}
+                withBorder={props.withBorders}
             >
                 <Humidity
                     humidity={humidity}
@@ -74,7 +91,7 @@ const HighlightsGrid = () => {
             </HighlightCard>
             <HighlightCard
                 title="Visibility"
-                withBorder={true}
+                withBorder={props.withBorders}
             >
                 <Visibility
                     visibility={visibility}
@@ -82,13 +99,28 @@ const HighlightsGrid = () => {
             </HighlightCard>
             <HighlightCard
                 title="Air Quality"
-                withBorder={true}
+                withBorder={props.withBorders}
             >
                 <AirQuality
                     aqi={aqi}
                 />
             </HighlightCard>
-        </Grid>
+        </Fragment>
+    );
+
+    return (
+        <Fragment>
+            {!props.isDesktop &&
+                <MobileGrid>
+                    {GridContent}
+                </MobileGrid>
+            }
+            {props.isDesktop &&
+                <DesktopGrid>
+                    {GridContent}
+                </DesktopGrid>
+            }
+        </Fragment>
     );
 };
 

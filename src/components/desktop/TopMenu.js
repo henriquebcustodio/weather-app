@@ -9,6 +9,7 @@ const TopMenuWrapper = styled.header`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    max-width: 69rem;
 `;
 
 const TopMenu = props => {
