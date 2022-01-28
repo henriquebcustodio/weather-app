@@ -28,7 +28,7 @@ const NameWrapper = styled.section`
 const CityName = () => {
     const { city } = useContext(CityContext);
     const cityName = city.name;
-    const cityRegion = city.region;
+    const cityRegion = city._links['city:admin1_division'].name;
 
     return (
         <NameWrapper>

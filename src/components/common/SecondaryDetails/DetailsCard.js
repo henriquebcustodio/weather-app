@@ -14,7 +14,7 @@ const DetailsCardWrapper = styled.div`
         &:nth-of-type(2) {
             font-weight: 500;
             font-size: 1rem;
-            color: ${props => props.theme.gray}
+            color: ${props => props.theme.textGray}
         }
     }
 `;

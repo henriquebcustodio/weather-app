@@ -1,21 +1,23 @@
-import { useContext, Fragment } from 'react';
+import { useContext, Fragment, useState } from 'react';
 import styled from 'styled-components';
-import colorScheme from '../colors/color-scheme';
 import CityName from '../components/common/CityName';
 import CurrentWeather from '../components/common/CurrentWeather';
-import Forecast from '../components/mobile/Forecast/Forecast';
-import Header from '../components/mobile/Header';
+import Forecast from '../components/mobile/Forecast';
+import Header from '../components/common/Header';
 import WeatherContext from '../context/weather-context';
 import CityContext from '../context/city-context';
 import Highlights from '../components/mobile/Highlights';
-import ReactLoading from 'react-loading';
+import BubbleLoading from '../components/UI/BubbleLoading';
+
 
 const MobileWrapper = styled.main`
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    overflow-y: scroll;
 `;
 
 const Break = styled.hr`
@@ -27,26 +29,24 @@ const Break = styled.hr`
     opacity: 0.5;
 `;
 
-const LoadingWrapper = styled.section`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
+
 
 const Mobile = () => {
     const { isBusy: weatherCtxBusy } = useContext(WeatherContext);
     const { isBusy: cityCtxBusy } = useContext(CityContext);
+    const [showContent, setShowContent] = useState(true);
+
+    const isSearchingHandler = newShowContent => {
+        setShowContent(newShowContent);
+    };
 
     return (
-        <MobileWrapper>
-            <Header />
-            {(!weatherCtxBusy && !cityCtxBusy) &&
+        <MobileWrapper id="main">
+            <Header
+                setShowContent={isSearchingHandler}
+                searchDropdownContainer={document.getElementById('main')}
+            />
+            {(!weatherCtxBusy && !cityCtxBusy && showContent) &&
                 <Fragment>
                     <CityName />
                     <CurrentWeather />
@@ -56,15 +56,8 @@ const Mobile = () => {
                     <Highlights />
                 </Fragment>
             }
-            {(weatherCtxBusy || cityCtxBusy) &&
-                <LoadingWrapper>
-                    <ReactLoading
-                        type={'bubbles'}
-                        color={colorScheme.blue}
-                        height={'7rem'}
-                        width={'7rem'}
-                    />
-                </LoadingWrapper>
+            {(showContent && (weatherCtxBusy || cityCtxBusy)) &&
+                <BubbleLoading />
             }
         </MobileWrapper>
     );

@@ -8,6 +8,7 @@ const HighlightCardWrapper = styled.section`
     box-sizing: border-box;
     border-radius: 1.5rem;
     padding: 1.5rem;
+    background-color: white;
     overflow: hidden;
     ${props => {
         return props.withBorder ? `
@@ -17,7 +18,7 @@ const HighlightCardWrapper = styled.section`
 
     h3 {
         font-weight: 500;
-        color: ${props => props.theme.gray};
+        color: ${props => props.theme.textGray};
         margin: 0;
         margin-bottom: 1rem;
     }

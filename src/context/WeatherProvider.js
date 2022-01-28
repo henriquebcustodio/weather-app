@@ -8,7 +8,7 @@ import aqicnAPI from '../services/aqicn-api';
 const WeatherProvider = props => {
     const [weatherData, setWeatherData] = useState({});
     const [isBusy, setIsBusy] = useState(true);
-    const { city, isBusy: cityCtxBusy } = useContext(CityContext);
+    const { city } = useContext(CityContext);
     const { units } = useContext(UnitsContext);
 
     useEffect(() => {
@@ -16,14 +16,14 @@ const WeatherProvider = props => {
             try {
                 const weatherResponse = await weatherAPI.get('onecall', {
                     params: {
-                        lat: city.latitude,
-                        lon: city.longitude,
+                        lat: city.location.latlon.latitude,
+                        lon: city.location.latlon.longitude,
                         exclude: 'minutely',
                         units: units,
                         appid: weatherAPIKey
                     }
                 });
-                const airQualityResponse = await aqicnAPI.get(`feed/geo:${city.latitude};${city.longitude}/`, {
+                const airQualityResponse = await aqicnAPI.get(`feed/geo:${city.location.latlon.latitude};${city.location.latlon.longitude}/`, {
                     params: {
                         token: process.env.REACT_APP_AQICN_API_KEY
                     }
@@ -35,28 +35,25 @@ const WeatherProvider = props => {
         };
 
         const updateWeather = async () => {
-            setIsBusy(true);
-            const data = await fetchData();
-            setWeatherData(data);
-            setIsBusy(false);
+            if (city) {
+                setIsBusy(true);
+                const data = await fetchData();
+                setWeatherData(data);
+                setIsBusy(false);
+            }
         };
 
-
-        if (!cityCtxBusy) {
-            updateWeather();
-        }
+        updateWeather();
 
         const interval = setInterval(() => {
-            if (!cityCtxBusy) {
-                updateWeather();
-            }
+            updateWeather();
         }, 60000 * 5);
 
         return () => {
             clearInterval(interval);
         };
 
-    }, [units, city, cityCtxBusy]);
+    }, [units, city]);
 
     const weatherContext = {
         weatherData: weatherData,

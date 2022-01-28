@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import useOnScreen from '../../../../utils/hooks/useOnScreen';
+import useOnScreen from '../../../../hooks/useOnScreen';
 import styled from 'styled-components';
 
 const Pill = styled.div`
@@ -26,7 +26,6 @@ const Ball = styled.div`
             transform: translateY(${props.yTranslation}rem)
         `;
     }}
-    /* transform: ${props => `translateY(${props.yTranslation}rem)`}; */
     
 `;
 
@@ -36,11 +35,7 @@ const PercentagePill = props => {
     const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
-        if (onScreen) {
-            setAnimate(true);
-        } else {
-            setAnimate(false);
-        }
+        if (onScreen) setAnimate(true);
     }, [onScreen]);
 
     const getBallYTranslation = percentage => {

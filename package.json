@@ -7,6 +7,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
+    "lodash": "^4.17.21",
     "luxon": "^2.2.0",
     "progressbar.js": "^1.1.0",
     "react": "^17.0.2",
@@ -14,7 +15,9 @@
     "react-horizontal-scrolling-menu": "^2.7.0",
     "react-icons": "^4.3.1",
     "react-loading": "^2.0.3",
+    "react-responsive": "^9.0.0-beta.6",
     "react-scripts": "5.0.0",
+    "simplebar-react": "^2.3.6",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.2"
   },

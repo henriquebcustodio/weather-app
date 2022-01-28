@@ -4,25 +4,28 @@ import HighlightsGrid from '../common/Highlights/HighlightsGrid';
 const HighlightsWrapper = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
+    max-width: 69rem;
+    padding: 0 5px;
+    box-sizing: border-box;
 `;
 
 const Title = styled.h2`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
     font-weight: 600;
     font-size: 1.3rem;
-    margin: 1.5rem 0;
+    margin: 0;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
 `;
 
 const Highlights = () => {
     return (
         <HighlightsWrapper>
             <Title>Today's Highlights</Title>
-            <HighlightsGrid withBorders={true} />
+            <HighlightsGrid
+                isDesktop={true}
+                withBorders={false}
+            />
         </HighlightsWrapper>
     );
 };

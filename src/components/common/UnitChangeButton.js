@@ -9,18 +9,25 @@ const Button = styled.a`
     border-radius: 50%;
     transition: all 0.2s;
     color: ${props => props.active ? "white" : "black"};
-    background-color: ${props => props.active ? "black" : props.theme.backgroundGray};
+    background-color: ${props => {
+        if (props.active) {
+            return "black";
+        }
+        return (props.isDesktop ? "white" : props.theme.backgroundGray);
+    }};
     font-weight: 600;
     font-size: 1.2rem;
     cursor: pointer;
 `;
 
 const UnitChangeButton = props => {
+
     return (
         <Button
             role="button"
             active={props.isActive}
             onClick={props.onClick}
+            isDesktop={props.isDesktop}
         >
             {props.text}
         </Button>
