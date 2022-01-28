@@ -47,8 +47,8 @@ const HighlightsGrid = props => {
     const uvi = Math.round(weatherData.current.uvi);
     const windSpeed = weatherData.current.wind_speed;
     const windDirection = weatherData.current.wind_deg;
-    const sunrise = getShortTime(unixToDateTime(weatherData.current.sunrise, null, locale));
-    const sunset = getShortTime(unixToDateTime(weatherData.current.sunset, null, locale));
+    const sunrise = getShortTime(unixToDateTime(weatherData.current.sunrise, weatherData.timezone, locale));
+    const sunset = getShortTime(unixToDateTime(weatherData.current.sunset, weatherData.timezone, locale));
     const humidity = weatherData.current.humidity;
     const visibility = weatherData.current.visibility;
     const aqi = weatherData.aqi;
