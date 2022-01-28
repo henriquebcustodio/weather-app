@@ -12,6 +12,7 @@ const SecondaryDetailsWrapper = styled.section`
     align-items: center;
     margin-top: 2.5rem;
     width: 100%;
+    max-width: 35rem;
 `;
 
 const SecondaryDetails = () => {

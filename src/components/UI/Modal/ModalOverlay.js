@@ -12,18 +12,16 @@ const Overlay = styled.div`
     justify-content: center;
     padding: 1rem;
     background-color: #FFF;
-    border-radius: 15px;
+    border-radius: 10px;
     z-index: 30;
-    animation: slide-up 300ms ease-out;
+    animation: slide-up 250ms ease-out;
 
     @keyframes slide-up {
         from {
-            opacity: 0;
-            transform: translate(-50%, 3rem);
+            transform: translate(-50%, 2rem);
         }
 
         to {
-            opacity: 1;
             transform: translate(-50%, -50%);
         }
     }

@@ -34,7 +34,7 @@ const CurrentWeather = () => {
     const currentWeatherData = weatherData.current.weather[0];
     const weatherId = currentWeatherData.id;
     const weatherDescription = toTitleCase(currentWeatherData.description);
-    const [isNight, setIsNight] = useState(false);
+    const [isNight, setIsNight] = useState();
 
     const isNightHandler = useCallback(dt => {
         setIsNight(dateTimeIsNight(dt));

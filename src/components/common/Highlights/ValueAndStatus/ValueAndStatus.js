@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ValueDisplay from "../ValueDisplay";
 import HighlightFooter from "../HighlightFooter";
-import Emoji from "../../../../UI/Emoji";
+import Emoji from "../../../UI/Emoji";
 import PercentagePill from './PercentagePill';
 
 const ValueAndStatusWrapper = styled.div`

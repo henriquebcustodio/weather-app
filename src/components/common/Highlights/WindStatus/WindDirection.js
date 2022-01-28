@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import useOnScreen from '../../../../utils/hooks/useOnScreen';
+import useOnScreen from '../../../../hooks/useOnScreen';
 import styled from 'styled-components';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
@@ -42,11 +42,7 @@ const WindDirection = props => {
     const onScreen = useOnScreen(windIconRef);
 
     useEffect(() => {
-        if (onScreen) {
-            setAnimate(true);
-        } else {
-            setAnimate(false);
-        }
+        if (onScreen) setAnimate(true);
     }, [onScreen]);
 
     return (

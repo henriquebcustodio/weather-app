@@ -16,7 +16,7 @@ const CurrentTimeWrapper = styled.section`
     }
 
     span {
-        color: ${props => props.theme.gray}
+        color: ${props => props.theme.textGray}
     }
 `;
 

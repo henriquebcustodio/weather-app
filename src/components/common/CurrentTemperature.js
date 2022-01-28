@@ -7,10 +7,18 @@ const TemperatureWrapper = styled.section`
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
+
+    p {
+        margin: 0;
+        text-align: top;
+        font-size: 5rem;
+        line-height: 5rem;
+    }
 
     span {
-        font-weight: 400;
-        font-size: 4.5rem;
+        font-size: 3rem;
+        font-weight: 500;
     }
 `;
 
@@ -21,7 +29,8 @@ const Temperature = () => {
 
     return (
         <TemperatureWrapper>
-            <span>{currentTemperature}{unitsToDisplay.temperature}</span>
+            <p>{currentTemperature}</p>
+            <span>{unitsToDisplay.temperature}</span>
         </TemperatureWrapper>
     );
 };
