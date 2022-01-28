@@ -1,7 +1,7 @@
 import WeatherIcon from '../../WeatherIcon';
 import { ForecastItemCard, IconWrapper, TemperatureWrapper } from './styles';
 
-const DayForeCastItem = props => {
+const DayForecastItem = props => {
     return (
         <ForecastItemCard isDesktop={props.isDesktop}>
             <span>{props.time}</span>
@@ -15,4 +15,4 @@ const DayForeCastItem = props => {
     );
 };
 
-export default DayForeCastItem;
+export default DayForecastItem;
