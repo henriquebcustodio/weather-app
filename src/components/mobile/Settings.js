@@ -10,7 +10,7 @@ const SettingsWrapper = styled.a`
     margin-left: 1rem;
     padding: 0.6rem;
     border-radius: 50%;
-    background-color: ${props => props.theme.backgroundGray};
+    background-color: ${props => props.theme.mainGray};
     transition: background 0.8s;
     cursor: pointer;
 

@@ -13,7 +13,7 @@ const Button = styled.a`
         if (props.active) {
             return "black";
         }
-        return (props.isDesktop ? "white" : props.theme.backgroundGray);
+        return (props.isDesktop ? "white" : props.theme.mainGray);
     }};
     font-weight: 600;
     font-size: 1.2rem;

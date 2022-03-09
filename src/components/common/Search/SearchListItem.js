@@ -19,7 +19,7 @@ const IconWrapper = styled.div`
     min-height: 2rem;
     height: 2rem;
     width: 2rem;
-    background-color: ${props => props.theme.backgroundGray};
+    background-color: ${props => props.theme.mainGray};
     border-radius: 50%;
 
     svg {
@@ -36,7 +36,7 @@ const Description = styled.div`
     align-items: center;
     margin-left: 1rem;
     box-sizing: border-box;
-    border-bottom: 1px solid ${props => `rgba(${props.theme.backgroundGrayRGB}, 1)`};
+    border-bottom: 1px solid ${props => `rgba(${props.theme.mainGrayRGB}, 1)`};
 
     p {
         width: 90%;

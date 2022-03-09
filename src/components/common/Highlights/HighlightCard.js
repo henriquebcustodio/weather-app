@@ -12,7 +12,7 @@ const HighlightCardWrapper = styled.section`
     overflow: hidden;
     ${props => {
         return props.withBorder ? `
-            border: 2px solid rgba(${props.theme.backgroundGrayRGB}, 0.5);
+            border: 2px solid rgba(${props.theme.mainGrayRGB}, 0.5);
         `: '';
     }}
 

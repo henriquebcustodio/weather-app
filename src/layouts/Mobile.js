@@ -25,7 +25,7 @@ const Break = styled.hr`
     border: 0;
     margin: 0;
     margin-top: 1.5rem;
-    border: 1px solid ${props => props.theme.backgroundGray};
+    border: 1px solid ${props => props.theme.mainGray};
     opacity: 0.5;
 `;
 

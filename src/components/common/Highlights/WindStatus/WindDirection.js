@@ -23,7 +23,7 @@ const IconWrapper = styled.div`
     width: 1.5rem;
     padding: 0.3rem;
     border-radius: 50%;
-    border: 2px solid ${props => props.theme.backgroundGray};
+    border: 2px solid ${props => props.theme.mainGray};
     color: ${props => props.theme.blue};
     transform-origin: center;
     transform: rotate(180deg);

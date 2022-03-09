@@ -10,7 +10,7 @@ const Pill = styled.div`
     width: 1.25rem;
     border-radius: 1.25rem;
     padding: 4px;
-    border: 2px solid ${props => props.theme.backgroundGray};
+    border: 2px solid ${props => props.theme.mainGray};
 `;
 
 const Ball = styled.div`
