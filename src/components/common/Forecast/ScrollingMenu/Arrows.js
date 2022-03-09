@@ -34,10 +34,10 @@ const LeftWrapper = styled.div`
 `;
 
 export const LeftArrow = props => {
-    const { scrollPrev } = useContext(VisibilityContext);
+    const { scrollPrev, isFirstItemVisible } = useContext(VisibilityContext);
     return (
         <Fragment>
-            {props.show &&
+            {props.show && !isFirstItemVisible &&
                 <LeftWrapper role="button" onClick={() => scrollPrev()}>
                     <FiArrowLeft
                         size="1.5rem"
@@ -49,10 +49,10 @@ export const LeftArrow = props => {
 };
 
 export const RightArrow = props => {
-    const { scrollNext } = useContext(VisibilityContext);
+    const { scrollNext, isLastItemVisible } = useContext(VisibilityContext);
     return (
         <Fragment>
-            {props.show &&
+            {props.show && !isLastItemVisible &&
                 <RightWrapper role="button" onClick={() => scrollNext()}>
                     <FiArrowRight
                         size="1.5rem"
