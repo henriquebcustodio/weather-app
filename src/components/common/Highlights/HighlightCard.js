@@ -10,9 +10,11 @@ const HighlightCardWrapper = styled.section`
     padding: 1.5rem;
     background-color: white;
     overflow: hidden;
+    box-shadow: 2px 2px 10px -5px rgba(0, 0, 0, 0.1);
     ${props => {
         return props.withBorder ? `
             border: 2px solid rgba(${props.theme.mainGrayRGB}, 0.5);
+            box-shadow: none;
         `: '';
     }}
 

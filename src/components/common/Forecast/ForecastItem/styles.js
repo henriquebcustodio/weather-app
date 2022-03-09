@@ -20,9 +20,11 @@ export const ForecastItemCard = styled.div`
         if (props.isDesktop) {
             return `
                 background-color: white;
-                margin: 0 5px;
+                margin: 0.5rem 5px;
                 padding: 1rem 1.5rem;
                 border-radius: 20px;
+                box-shadow: 2px 2px 10px -5px rgba(0, 0, 0, 0.1);
+
             `;
         }
     }}
