@@ -20,6 +20,7 @@ const ForecastScroll = props => {
                 <DailyForecast
                     data={props.data}
                     isDesktop={props.isDesktop}
+                    timezone={props.timezone}
                 />
             }
         </Wrapper>
