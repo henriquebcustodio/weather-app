@@ -1,4 +1,5 @@
-# Weather App ([the-weather-app-react.herokuapp.com/](the-weather-app-react.herokuapp.com/))
+# Weather App ([the-weather-app-react.herokuapp.com/](https://the-weather-app-react.herokuapp.com/))
+Please allow the location service when using the app!
 
 ![desktop](https://user-images.githubusercontent.com/77708400/167692276-c275f869-3372-47c3-8872-8bab77745dd9.png)
 
